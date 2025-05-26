@@ -23,7 +23,6 @@ int read_map(char *filename, char *temp_map)
 	return (bytes_read);	
 }
 
-
 char **fill_2d_array(char *temp_map)
 {
 	int	row;

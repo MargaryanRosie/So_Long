@@ -5,14 +5,16 @@ int main()
 {
 	char temp_map[1000];
 	char **map_2d;
-	int valid_path;
+	int is_valid_map;
+	int rectangular;
 
-	read_map("maps/level1.ber", temp_map);
+	read_map("maps/invalid.ber", temp_map);
 	map_2d = fill_2d_array(temp_map);
 
-	valid_path = is_valid_path(map_2d);
+	is_valid_map = validate_map(map_2d);
+	rectangular = is_rectangular(map_2d);
 
-	printf("%d\n", valid_path);
 
+	printf("%d\n", is_valid_map);
 	return 0;
 }

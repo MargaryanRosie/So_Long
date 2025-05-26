@@ -50,7 +50,7 @@ char *allocate_line(int line_length)
 	char *line;
 
 	line = (char *)malloc((line_length + 1) * sizeof(char));
-	if(!line)
+	if (!line)
 		return (NULL);
 	line[line_length] = '\0';
 	return (line);
@@ -61,7 +61,7 @@ void fill_line(char *line, char *temp_map, int *index)
 	int	i;
 
 	i = 0;
-	while(temp_map[*index] && temp_map[*index] != '\n')
+	while (temp_map[*index] && temp_map[*index] != '\n')
 	{
 		line[i] = temp_map[*index];
 		(*index)++;
@@ -77,10 +77,20 @@ void free_map(char **map_2d, int rows_allocated)
 	int	i;
 
 	i = 0;
-	while(i < rows_allocated)
+	while (i < rows_allocated)
 	{
 		free(map_2d[i]);
 		i++;
 	}
 	free(map_2d);
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return(i);
 }
