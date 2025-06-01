@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <../mlx/mlx.h>
 
-#define TILE_SIZE 32
+#define TILE_SIZE 96
 
 typedef struct s_game
 {
@@ -43,9 +43,7 @@ char	**copy_map(char **map);
 void	find_player(char **map, int *x, int *y);
 char	*ft_strdup(char *str);
 int		has_valid_components(char **map);
-static void	set_flags(char c, int *col, int *wall, int *space);
 int		has_basic_components(char **map);
-static void	count_elements(char ch, int *c, int *p, int *e);
 int		has_valid_num_of_elements(char **map);
 int		validate_structure(char **map);
 int		validate_content(char **map);
@@ -55,7 +53,6 @@ int		is_surrounded_by_walls(char **map);
 int		ft_strlen(char *s);
 void	draw_tile(t_game *game, void *img, int x, int y);
 void	draw_map(t_game *game);
-static void set_game_state(t_game *game);
 void	game_init(t_game *game, char **map);
 void	load_images(t_game *game);
 
