@@ -43,7 +43,7 @@ void	draw_map(t_game *game)
 			else if (tile == '1')
 				draw_wall(game, j, i);
 			else if (tile == 'P')
-				draw_tile(game, game->img_player_f, j, i);
+				draw_tile(game, game->img_player, j, i);
 			else if (tile == 'C')
 				draw_tile(game, game->img_collectible, j, i);
 			else if (tile == 'E')

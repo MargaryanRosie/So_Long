@@ -35,6 +35,7 @@ typedef struct s_game
 	
 	void	*img_floor;
 
+	void	*img_player;
 	void	*img_player_r;
 	void	*img_player_b;
 	void	*img_player_f;
@@ -72,5 +73,10 @@ void	game_init(t_game *game, char **map);
 void	load_images(t_game *game);
 void	draw_background(t_game *game);
 void	draw_wall(t_game *game, int x, int y);
+void	ft_putchar(char c);
+void	ft_putnbr(int n);
+int		handle_keypress(int keycode, t_game *game);
+void	move_player(t_game *game, int h, int v);
+int		exit_game(t_game *game);
 
 #endif

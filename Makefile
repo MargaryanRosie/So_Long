@@ -11,7 +11,9 @@ SRC = src/map/map_utils.c \
 	src/draw_image_2.c \
 	src/init_mlx.c \
 	src/load_images.c \
-	src/main.c
+	src/main.c \
+	src/movement/input.c \
+	src/utils.c
 
 OBJ = $(SRC:.c=.o)
 

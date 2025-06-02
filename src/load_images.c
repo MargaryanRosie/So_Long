@@ -26,6 +26,8 @@ void	load_images(t_game *game)
 	game->img_exit = mlx_xpm_file_to_image(game->mlx, "textures/exit.xpm", &w, &h);
 	game->img_collectible = mlx_xpm_file_to_image(game->mlx, "textures/collectible.xpm", &w, &h);
 
+	game->img_player = game->img_player_f;     //by default
+
 	if (!game->img_wall_ml || !game->img_wall_rd || !game->img_wall_ml
 		|| !game->img_wall_dl || !game->img_wall_dm || !game->img_wall_rm
 		|| !game->img_wall_tl || !game->img_wall_tm || !game->img_wall_tr
