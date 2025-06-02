@@ -8,6 +8,7 @@ SRC = src/map/map_utils.c \
 	src/validation/validate_map_utils.c \
 	src/validation/validate_path.c \
 	src/draw_image.c \
+	src/draw_image_2.c \
 	src/init_mlx.c \
 	src/load_images.c \
 	src/main.c

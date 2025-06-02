@@ -12,8 +12,8 @@
 
 typedef struct s_game
 {
-	void	*mlx;              //returned from mlx_init()
-	void	*window;          //created with mlx_new_window()
+	void	*mlx;             
+	void	*window;         
 	char	**map;
 	int		width;
 	int 	height;
@@ -21,9 +21,24 @@ typedef struct s_game
 	int		player_y;
 	int		moves;
 	int		collectibles;
-	void	*img_wall;
+	void	*img_wall_ml;
+	void	*img_wall_rd;
+	void	*img_wall_dl;
+	void	*img_wall_dm;
+	void	*img_wall_rm;
+	void	*img_wall_tl;
+	void	*img_wall_tm;
+	void	*img_wall_tr;
+	void	*img_wall_stone;
+	void	*img_wall_yolka;
+	void	*img_wall_tree;
+	
 	void	*img_floor;
-	void	*img_player;
+
+	void	*img_player_r;
+	void	*img_player_b;
+	void	*img_player_f;
+	void	*img_player_l;
 	void	*img_exit;
 	void	*img_collectible;
 } t_game;
@@ -55,5 +70,7 @@ void	draw_tile(t_game *game, void *img, int x, int y);
 void	draw_map(t_game *game);
 void	game_init(t_game *game, char **map);
 void	load_images(t_game *game);
+void	draw_background(t_game *game);
+void	draw_wall(t_game *game, int x, int y);
 
 #endif

@@ -87,6 +87,7 @@ int	main(void)
 	game_init(&game, game.map);   
 	load_images(&game);           
 
+	//draw_background(&game);
 	draw_map(&game);
 
 	mlx_loop(game.mlx);
