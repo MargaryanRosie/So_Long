@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int count_lines(char *temp_map)
 {
@@ -42,8 +42,6 @@ char **allocate_map(int line_count)
 	if(!map_2d)
 		return (NULL);
 	map_2d[line_count] = NULL;
-	// for (int i = 0; i < line_count; i++)
-    // 	printf("map_2d[%d] pointer = %p\n", i, (void *)map_2d[i]);
 	return (map_2d);
 }
 
@@ -71,20 +69,6 @@ void fill_line(char *line, char *temp_map, int *index)
 	}
 	if (temp_map[*index] == '\n')
 		(*index)++;
-}
-
-
-void free_map(char **map_2d, int rows_allocated)
-{
-	int	i;
-
-	i = 0;
-	while (i < rows_allocated)
-	{
-		free(map_2d[i]);
-		i++;
-	}
-	free(map_2d);
 }
 
 int	ft_strlen(char *s)

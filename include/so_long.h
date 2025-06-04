@@ -12,11 +12,11 @@
 
 typedef struct s_game
 {
-	void	*mlx;             
-	void	*window;         
+	void	*mlx;
+	void	*window;
 	char	**map;
 	int		width;
-	int 	height;
+	int		height;
 	int		player_x;
 	int		player_y;
 	int		moves;
@@ -30,11 +30,7 @@ typedef struct s_game
 	void	*img_wall_tm;
 	void	*img_wall_tr;
 	void	*img_wall_stone;
-	void	*img_wall_yolka;
-	void	*img_wall_tree;
-	
 	void	*img_floor;
-
 	void	*img_player;
 	void	*img_player_r;
 	void	*img_player_b;
@@ -78,5 +74,6 @@ void	ft_putnbr(int n);
 int		handle_keypress(int keycode, t_game *game);
 void	move_player(t_game *game, int h, int v);
 int		exit_game(t_game *game);
+void	free_all(t_game *game);
 
 #endif

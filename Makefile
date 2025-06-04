@@ -13,7 +13,8 @@ SRC = src/map/map_utils.c \
 	src/load_images.c \
 	src/main.c \
 	src/movement/input.c \
-	src/utils.c
+	src/utils.c \
+	src/free/free.c
 
 OBJ = $(SRC:.c=.o)
 

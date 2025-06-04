@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../include/so_long.h"
 
 void	draw_tile(t_game *game, void *img, int x, int y)
 {

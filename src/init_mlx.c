@@ -1,18 +1,4 @@
-#include "so_long.h"
-
-// When you run your program, you call game_init() to:
-
-// Connect to the graphics library (MiniLibX)
-
-// Create the game window
-
-// Load the map
-
-// Find the player's position
-
-// Count collectibles
-
-// Set everything up inside your t_game struct
+#include "../include/so_long.h"
 
 static void set_game_state(t_game *game)
 {

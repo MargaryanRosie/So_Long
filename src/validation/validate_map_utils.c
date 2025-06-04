@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../include/so_long.h"
 //• The map can be composed of only these 5 characters
 
 int	has_valid_components(char **map)

@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../include/so_long.h"
 
 
 int	handle_keypress(int keycode, t_game *game)
