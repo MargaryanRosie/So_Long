@@ -4,17 +4,17 @@ int	validate_structure(char **map)
 {
 	if (is_rectangular(map) == 0)
 	{
-		write(2, "Error: The map is not rectangular\n", 35);
+		write(2, "Error\nInvalid Map: The map is not rectangular\n", 47);
 		return (0);
 	}
 	if (is_surrounded_by_walls(map) == 0)
 	{
-		write(2, "The map is not fully surrounded by walls\n", 42);
+		write(2, "Error\nInvalid Map: The map is not fully surrounded by walls\n", 61);
 		return (0);
 	}
 	if (is_valid_path(map) == 0)
 	{
-		write(2, "The game is not playable\n", 26);
+		write(2, "Error\nInvalid Map: The game is not playable\n", 45);
 		return (0);
 	}
 	return (1);
@@ -24,17 +24,17 @@ int	validate_content(char **map)
 {
 	if (has_valid_components(map) == 0)
 	{
-		write(2, "Error: The map contains not valid components\n", 46);
+		write(2, "Error\nInvalid Map: The map contains not valid components\n", 58);
 		return (0);
 	}
 	if (has_basic_components(map) == 0)
 	{
-		write(2, "Error: The map doesnt have the basic components\n", 49);
+		write(2, "Error\nInvalid Map: The map doesnt have the basic components\n", 61);
 		return (0);
 	}
 	if (has_valid_num_of_elements(map) == 0)
 	{
-		write(2, "The map doesnt have valid number of elements\n", 46);
+		write(2, "Error\nInvalid Map: The map doesnt have valid number of elements\n", 65);
 		return (0);
 	}
 	return (1);

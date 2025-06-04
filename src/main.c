@@ -2,7 +2,6 @@
 #include "../include/so_long.h"
 #include <stdio.h>
 
-
 static void	check_map(t_game *game, char *s, char *temp_map)
 {
 	if (read_map(s, temp_map) != 0)
@@ -18,8 +17,7 @@ static void	check_map(t_game *game, char *s, char *temp_map)
 	}
 	if (!validate_map(game->map))
 	{
-		write(2, "Error\nInvalid map\n", 19);
-		free_map(game->map, count_lines(temp_map));
+		free_map(game->map, game->height);
 		exit(3);
 	}
 }
@@ -46,4 +44,6 @@ int	main(int argc, char *argv[])
 	free_all(&game);
 	return (0);
 }
+
+
 
