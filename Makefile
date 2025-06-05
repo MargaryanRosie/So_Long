@@ -1,4 +1,5 @@
 NAME = so_long
+NAME_BONUS = so_long_bonus
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx
 
@@ -16,14 +17,31 @@ SRC = src/map/map_utils.c \
 	src/utils.c \
 	src/free/free.c
 
+
 OBJ = $(SRC:.c=.o)
+
+SRC_BONUS = src_bonus/map_bonus/map_bonus.c \
+	src_bonus/map_bonus/map_utils_bonus.c \
+	src_bonus/validation_bonus/validate_map_bonus.c \
+	src_bonus/validation_bonus/validate_path_bonus.c \
+	src_bonus/validation_bonus/validate_map_utils_bonus.c \
+	src_bonus/enemy/find_enemies.c \
+	src_bonus/free_bonus/free_map_bonus.c \
+	src_bonus/init_mlx_bonus.c
+
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 MLX = mlx/libmlx.a
 MLX_FLAGS = -Lmlx -lmlx -lX11 -lXext -lm         
 all: $(NAME)
 
 $(NAME): $(OBJ) $(MLX)
-	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(MLX_FLAGS) -o $(NAME)          
+	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(MLX_FLAGS) -o $(NAME)  
+
+$(NAME_BONUS): $(OBJ_BONUS) $(MLX)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) $(MLX) $(MLX_FLAGS) -o $(NAME_BONUS)  
+
+bonus: $(NAME_BONUS)
 
 $(MLX):
 	$(MAKE) -C mlx                  
@@ -34,10 +52,11 @@ $(MLX):
 										//-o $@  means take the output in the file ($@) which is the target(with .o extension)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
+
 
 re: fclean all
 
