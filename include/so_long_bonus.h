@@ -50,6 +50,24 @@ typedef struct s_game
 	void	*img_collectible;
 } t_game;
 
+
+typedef struct s_counter
+{
+	int	p;
+	int	c;
+	int	e;
+	int	enm;
+}t_counter;
+
+
+typedef struct s_components
+{
+	int	collectibles;
+	int	walls;
+	int	space;
+	int	enemy;
+}t_components;
+
 int		count_lines(char *temp_map);
 int		line_length(char *temp_map);
 char	**allocate_map(int line_count);
