@@ -46,6 +46,11 @@ typedef struct s_game
 	void	*img_player_b;
 	void	*img_player_f;
 	void	*img_player_l;
+	void	*img_enemy_l;
+	void	*img_enemy_f;
+	void	*img_enemy_b;
+	void	*img_enemy_r;
+	void	*img_enemy;
 	void	*img_exit;
 	void	*img_collectible;
 } t_game;
