@@ -14,6 +14,8 @@ typedef struct s_enemy
 {
 	int	x;
 	int	y;
+	int	direction;
+	int image;           //this is like a counter when to change the image of the enemy
 }t_enemy;
 
 typedef struct s_game
