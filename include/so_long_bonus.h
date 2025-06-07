@@ -31,6 +31,7 @@ typedef struct s_game
 	int		collectibles;
 
 	t_enemy enemies[100];
+	void	*enemy_images[3];
 	int enemy_count;
 	
 	void	*img_wall_ml;
@@ -110,5 +111,7 @@ int		handle_keypress(int keycode, t_game *game);
 void	move_player(t_game *game, int h, int v);
 int		exit_game(t_game *game);
 void	free_all(t_game *game);
+void	update_enemy_position(t_game *game);
+int	update_enemy_position_loop(void *parameter);
 
 #endif

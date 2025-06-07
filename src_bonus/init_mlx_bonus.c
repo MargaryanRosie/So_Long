@@ -50,29 +50,29 @@ void	game_init(t_game *game, char **map)
 	set_game_state(game);
 }
 
-int main()
-{
-	t_game	game;
-	char	temp_map[1000];
+// int main()
+// {
+// 	t_game	game;
+// 	char	temp_map[1000];
 
-	read_map("maps/valid_map_bonus/level1.ber", temp_map);
-	char **map_2d = fill_2d_array(temp_map);
+// 	read_map("maps/valid_map_bonus/level1.ber", temp_map);
+// 	char **map_2d = fill_2d_array(temp_map);
 
-	// int i = 0;
-	// int j;
-	// while (i < 6)
-	// {
-	// 	j = 0;
-	// 	while (j < 6)
-	// 	{
-	// 		printf("%c", game.map[i][j]);
-	// 		j++;
-	// 	}
-	// 	printf("\n");
-	// 	i++;
-	// }
-	game_init(&game, map_2d);
-	printf("enemy x, y: (%d, %d)\n", game.enemies[1].x, game.enemies[1].y);
+// 	// int i = 0;
+// 	// int j;
+// 	// while (i < 6)
+// 	// {
+// 	// 	j = 0;
+// 	// 	while (j < 6)
+// 	// 	{
+// 	// 		printf("%c", game.map[i][j]);
+// 	// 		j++;
+// 	// 	}
+// 	// 	printf("\n");
+// 	// 	i++;
+// 	// }
+// 	game_init(&game, map_2d);
+// 	printf("enemy x, y: (%d, %d)\n", game.enemies[1].x, game.enemies[1].y);
 
-}
+// }
 

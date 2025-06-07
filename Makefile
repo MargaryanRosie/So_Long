@@ -25,9 +25,14 @@ SRC_BONUS = src_bonus/map_bonus/map_bonus.c \
 	src_bonus/validation_bonus/validate_map_bonus.c \
 	src_bonus/validation_bonus/validate_path_bonus.c \
 	src_bonus/validation_bonus/validate_map_utils_bonus.c \
-	src_bonus/enemy/find_enemies.c \
 	src_bonus/free_bonus/free_map_bonus.c \
-	src_bonus/init_mlx_bonus.c
+	src_bonus/init_mlx_bonus.c \
+	src_bonus/movement_bonus/movement_bonus.c \
+	src_bonus/draw_image_bonus.c \
+	src_bonus/main_bonus.c \
+	src_bonus/movement_bonus/input_bonus.c \
+	src_bonus/utils_bonus.c \
+	src_bonus/load_images_bonus.c
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
@@ -60,4 +65,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

@@ -1,4 +1,4 @@
-#include "so_long_bonus.h"
+#include "../include/so_long_bonus.h"
 
 void	update_enemy_position(t_game *game)
 {
@@ -26,4 +26,19 @@ void	update_enemy_position(t_game *game)
 		}
 		i++;
 	}
+}
+
+// void	update_enemy_animation(t_game *game)
+// {
+
+// }
+
+
+int	update_enemy_position_loop(void *parameter)        //loop hooky spasum e int veradardznox funkciayi, dra hamar int return type
+{
+	t_game	*game = (t_game *)parameter;
+	update_enemy_position(game);
+	draw_map(game);
+
+	return (0);
 }
