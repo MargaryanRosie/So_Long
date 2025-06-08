@@ -14,6 +14,7 @@ static void set_game_state(t_game *game)
 			if (game->map[i][j] == 'P')
 			{
 				game->player_x = j;
+				game->player_y = i;
 			}
 			else if (game->map[i][j] == 'C')
 			{

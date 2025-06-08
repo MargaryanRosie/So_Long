@@ -38,7 +38,7 @@ int	main(int argc, char *argv[])
 	draw_map(&game);
 
 	mlx_key_hook(game.window, handle_keypress, &game);          //this calls the function with the data given for your opened window
-	mlx_loop_hook(game.mlx, update_enemy_position_loop, &game);
+	//mlx_loop_hook(game.mlx, update_enemy_position_loop, &game);
 	mlx_hook(game.window, 17, 0, exit_game, &game);
 	mlx_loop(game.mlx);
 	free_all(&game);

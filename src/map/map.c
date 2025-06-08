@@ -53,10 +53,11 @@ char	**fill_2d_array(char *temp_map)
 	pos = 0;
 	while (row < line_count)
 	{
-		this_line_len = pos;
-		while (temp_map[this_line_len] && temp_map[this_line_len] != '\n')
+		this_line_len = 0;
+		while (temp_map[this_line_len + pos] && temp_map[this_line_len + pos] != '\n')
 			this_line_len++;
 		map_2d[row] = allocate_line(this_line_len);
+		//printf("line %d, position %d, line length %d\n", row, pos, this_line_len);
 		if (!map_2d[row])
 		{
 			write(2, "Allocation for line failed", 27);

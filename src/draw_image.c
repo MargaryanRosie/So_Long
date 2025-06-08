@@ -18,7 +18,6 @@ void	draw_map(t_game *game)
 		while (j < game->width)
 		{
 			tile = game->map[i][j];
-	
 			if (tile == '0')
 				draw_tile(game, game->img_floor, j, i);
 			else if (tile == '1')

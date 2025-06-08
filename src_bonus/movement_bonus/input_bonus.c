@@ -11,7 +11,11 @@ int	handle_keypress(int keycode, t_game *game)
 	if (keycode == 'w')
 		move_player(game, 0, -1);
 	else if (keycode == 's')
+	{
+		printf("initial pos: (%d, %d)\n", game->player_x, game->player_y);
 		move_player(game, 0, 1);
+		printf("new_pos: (%d, %d)\n", game->player_x, game->player_y);
+	}
 	else if (keycode == 'a')
 		move_player(game, -1, 0);
 	else if (keycode == 'd')
@@ -26,12 +30,12 @@ static void print_moves(int moves)
 	write(1, "\n", 1);
 }
 
-static void check_exit(int collectibles, int moves)
+static void check_exit(t_game *game)
 {
-	if(collectibles == 0)
+	if(game->collectibles == 0)
 		{
-			(moves)++;
-			print_moves(moves);
+			(game->moves)++;
+			print_moves(game->moves);
 			write(1, "You Won !\n", 11);
 			exit(0);
 		}
@@ -52,36 +56,43 @@ static void	set_player_direction(t_game *game, int h, int v)
 
 void	move_player(t_game *game, int h, int v)               //horizontal, vertical movement   1-down or right -1-left or uop
 {
-	int	new_x;
-	int new_y;
+	int		new_x;
+	int		new_y;
 	char	new_tile;
 
 	new_x = game->player_x + h;
 	new_y = game->player_y + v;
+	if (new_x < 0 || new_y < 0 || new_y >= game->height || new_x >= ft_strlen(game->map[new_y]))
+        return;
 	new_tile = game->map[new_y][new_x];
 
 	set_player_direction(game, h, v);
 
-	if(new_tile == '1')
+	if (new_tile == '1')
 		return;
 	if (new_tile == 'C')
 		(game->collectibles)--;
-	if(new_tile == 'E')
+	if (new_tile == 'E')
 	{
-		check_exit(game->collectibles, game->moves);
+		check_exit(game);
 		return;
+	}
+	if (new_tile == 'M')
+	{
+		write(1, "Game Over! You were caught by an enemy!\n", 41);
+		exit(0);
 	}
 
 	game->map[game->player_y][game->player_x] = '0';
 	game->map[new_y][new_x] = 'P';
 	game->player_x = new_x;
 	game->player_y = new_y;
-	game->moves++;
+	(game->moves)++;
 	print_moves(game->moves);
 	draw_map(game);
 }
 
-int	exit_game(t_game *game)
+int	exit_game(t_game	*game)
 {
 	free_map(game->map, game->height);
 	mlx_destroy_window(game->mlx, game->window);

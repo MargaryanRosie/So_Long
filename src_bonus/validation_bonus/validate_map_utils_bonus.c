@@ -34,7 +34,6 @@ static void	set_flags(char c, t_components *components)
 		components->enemy = 1;
 }
 
-//this is for the design part, if the game is playable or not we will check in another function
 int	has_basic_components(char **map)
 {
 	t_components	components;

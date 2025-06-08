@@ -52,8 +52,8 @@ char	**fill_2d_array(char *temp_map)
 	pos = 0;
 	while (row < line_count)
 	{
-		this_line_len = pos;
-		while (temp_map[this_line_len] && temp_map[this_line_len] != '\n')
+		this_line_len = 0;
+		while (temp_map[this_line_len + pos] && temp_map[this_line_len + pos] != '\n')
 			this_line_len++;
 		map_2d[row] = allocate_line(this_line_len);
 		if (!map_2d[row])
@@ -63,6 +63,7 @@ char	**fill_2d_array(char *temp_map)
 			return (NULL);
 		}
 		fill_line(map_2d[row], temp_map, &pos);
+		printf("line %d: %s, last char: %c\n", row, map_2d[row], map_2d[row][6]);
 		row++;
 	}
 	return (map_2d);
