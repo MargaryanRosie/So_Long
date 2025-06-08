@@ -14,7 +14,7 @@ void	update_enemy_position(t_game *game)
 
 		if (new_x >= 0 && new_x < game->width && new_y >= 0 && new_y < game->height)
 		{
-			if(game->map[new_y][new_x] != '1' && game->map[new_y][new_x] != 'M')
+			if(game->map[new_y][new_x] != '1' && game->map[new_y][new_x] != 'M' && game->map[new_y][new_x] != 'C')
 			{
 				if(game->map[new_y][new_x] == 'P')
 				{
@@ -48,7 +48,7 @@ int		update_enemy_position_loop(void *parameter)        //loop hooky spasum e in
 
 	printf("Enemy update loop running\n"); // Debug print
 
-	if (count > 1200)
+	if (count > 1400)
 	{
 		update_enemy_position(game); 
 		draw_map(game);
