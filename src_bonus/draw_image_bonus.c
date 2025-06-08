@@ -41,6 +41,7 @@ void	draw_map(t_game *game)
 {
 	int		i;
 	int		j;
+	int		k;
 	char	tile;
 
 	i = 0;
@@ -61,8 +62,26 @@ void	draw_map(t_game *game)
 				draw_tile(game, game->img_collectible, j, i);
 			else if (tile == 'E')
 				draw_tile(game, game->img_exit, j, i);
-			else if (tile == 'M')
-				draw_tile(game, game->img_enemy, j, i);
+			else if (tile == 'M')                //menq gitenq vor sa enemy e, bayc chgitenq enemies[]- i vorerord enemy-n e
+			{
+				k = 0;
+				while (k < game->enemy_count)
+				{
+					if(game->enemies[k].x == j && game->enemies[k].y == i)
+					{
+						if (game->enemies[k].dx == -1)
+							draw_tile(game, game->img_enemy_l, j, i);
+						else if (game->enemies[k].dx == 1)
+							draw_tile(game, game->img_enemy_r, j, i);
+						else if (game->enemies[k].dy == -1)
+							draw_tile(game, game->img_enemy_f, j, i);
+						else if (game->enemies[k].dy == 1)
+							draw_tile(game, game->img_enemy_b, j, i);
+						break;
+					}
+					k++;
+				}
+			}
 			j++;
 		}
 		i++;

@@ -31,6 +31,12 @@ void	load_images(t_game *game)
 	game->img_player = game->img_player_f;     //by default
 	game->img_enemy = game->img_enemy_f;
 
+	game->enemy_images[0] = game->img_enemy_f;
+	game->enemy_images[1] = game->img_enemy_r;
+	game->enemy_images[2] = game->img_enemy_l;
+	game->enemy_images[3] = game->img_enemy_b;
+
+
 	if (!game->img_wall_ml || !game->img_wall_rd || !game->img_wall_dl
 		|| !game->img_wall_dm || !game->img_wall_rm
 		|| !game->img_wall_tl || !game->img_wall_tm || !game->img_wall_tr

@@ -14,8 +14,8 @@ typedef struct s_enemy
 {
 	int	x;
 	int	y;
-	int	direction;
-	int image;           //this is like a counter when to change the image of the enemy
+	int	dx;               //horizontal
+	int dy;               //vertical
 }t_enemy;
 
 typedef struct s_game
@@ -31,7 +31,7 @@ typedef struct s_game
 	int		collectibles;
 
 	t_enemy enemies[100];
-	void	*enemy_images[3];
+	void	*enemy_images[4];
 	int enemy_count;
 	
 	void	*img_wall_ml;

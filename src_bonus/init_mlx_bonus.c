@@ -32,6 +32,42 @@ static void set_game_state(t_game *game)
 	}
 }
 
+void	enemy_init(t_game *game)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (i < game->height)
+	{
+		j = 0;
+		while (j < game->width)
+		{
+			if (game->map[i][j] == 'M')
+			{
+				game->enemies[count].x = j;
+				game->enemies[count].y = i;
+
+				if (count % 2 == 0)
+				{
+					game->enemies[count].dx = 1;
+					game->enemies[count].dy = 0;
+				}
+				else
+				{
+					game->enemies[count].dx = 0;
+					game->enemies[count].dy = 1;
+				}
+				count++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 
 void	game_init(t_game *game, char **map)
 {
@@ -49,6 +85,7 @@ void	game_init(t_game *game, char **map)
 	game->collectibles = 0;
 	game->enemy_count = 0;
 	set_game_state(game);
+	enemy_init(game);
 }
 
 // int main()
