@@ -15,7 +15,7 @@ void	update_enemy_position(t_game *game)
 			&& new_y >= 0 && new_y < game->height)
 		{
 			if (game->map[new_y][new_x] != '1' && game->map[new_y][new_x]!= 'M'
-				&& game->map[new_y][new_x] != 'C')
+				&& game->map[new_y][new_x] != 'C' && game->map[new_y][new_x] != 'E')
 			{
 				if (game->map[new_y][new_x] == 'P')
 				{
