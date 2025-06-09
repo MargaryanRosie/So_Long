@@ -33,6 +33,8 @@ typedef struct s_game
 	t_enemy enemies[100];
 	void	*enemy_images[4];
 	int enemy_count;
+	void	*collectible_images[3];
+	int	collectible_image;
 	
 	void	*img_wall_ml;
 	void	*img_wall_rd;
@@ -56,6 +58,8 @@ typedef struct s_game
 	void	*img_enemy;
 	void	*img_exit;
 	void	*img_collectible;
+	void	*img_collectible_2;
+	void	*img_collectible_3;
 } t_game;
 
 

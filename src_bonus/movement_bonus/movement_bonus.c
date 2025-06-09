@@ -48,11 +48,12 @@ int		update_enemy_position_loop(void *parameter)        //loop hooky spasum e in
 
 	printf("Enemy update loop running\n"); // Debug print
 
-	if (count > 1400)
+	if (count > 1700)
 	{
 		update_enemy_position(game); 
 		draw_map(game);
 		count = 0;
+		game->collectible_image = (game->collectible_image + 1) % 3;
 	}
 
 	return (0);

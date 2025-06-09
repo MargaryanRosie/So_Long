@@ -59,7 +59,7 @@ void	draw_map(t_game *game)
 			else if (tile == 'P')
 				draw_tile(game, game->img_player, j, i);
 			else if (tile == 'C')
-				draw_tile(game, game->img_collectible, j, i);
+				draw_tile(game, game->collectible_images[game->collectible_image], j, i);
 			else if (tile == 'E')
 				draw_tile(game, game->img_exit, j, i);
 			else if (tile == 'M')                //menq gitenq vor sa enemy e, bayc chgitenq enemies[]- i vorerord enemy-n e
