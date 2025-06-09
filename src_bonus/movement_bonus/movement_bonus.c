@@ -1,5 +1,29 @@
 #include "../include/so_long_bonus.h"
 
+
+static void	check_conditions(t_game *game, int new_x, int new_y, int i)
+{
+	if (game->map[new_y][new_x] != '1' && game->map[new_y][new_x] != 'M'
+				&& game->map[new_y][new_x] != 'C'
+				&& game->map[new_y][new_x] != 'E')
+	{
+		if (game->map[new_y][new_x] == 'P')
+		{
+			write(1, "Game Over! You were caught by an enemy!\n", 41);
+			exit_game(game);
+		}
+		game->map[game->enemies[i].y][game->enemies[i].x] = '0';
+		game->enemies[i].x = new_x;
+		game->enemies[i].y = new_y;
+		game->map[new_y][new_x] = 'M';
+	}
+	else
+	{
+		game->enemies[i].dx = -game->enemies[i].dx;
+		game->enemies[i].dy = -game->enemies[i].dy;
+	}
+}
+
 void	update_enemy_position(t_game *game)
 {
 	int	i;
@@ -14,24 +38,7 @@ void	update_enemy_position(t_game *game)
 		if (new_x >= 0 && new_x < game->width
 			&& new_y >= 0 && new_y < game->height)
 		{
-			if (game->map[new_y][new_x] != '1' && game->map[new_y][new_x]!= 'M'
-				&& game->map[new_y][new_x] != 'C' && game->map[new_y][new_x] != 'E')
-			{
-				if (game->map[new_y][new_x] == 'P')
-				{
-					write(1, "Game Over !\n", 13);
-					exit_game(game);
-				}
-				game->map[game->enemies[i].y][game->enemies[i].x] = '0';
-				game->enemies[i].x = new_x;
-				game->enemies[i].y = new_y;
-				game->map[new_y][new_x] = 'M';
-			}
-			else                     //change the direction if there is wall
-			{
-				game->enemies[i].dx = -game->enemies[i].dx;
-				game->enemies[i].dy = -game->enemies[i].dy;
-			}
+			check_conditions(game, new_x, new_y, i);
 		}
 		i++;
 	}
@@ -46,7 +53,6 @@ int		update_enemy_position_loop(void *parameter)        //loop hooky spasum e in
 
 	game = (t_game *)parameter;
 	count++;                //every time this function is called, cont is incremented
-	printf("Enemy update loop running\n"); // Debug print
 	if (count > 1700)
 	{
 		update_enemy_position(game);

@@ -23,19 +23,19 @@ int	handle_keypress(int keycode, t_game *game)
 	return (0);
 }
 
-static void print_moves(int moves)
-{
-	write(1, "Moves: ", 7);
-	ft_putnbr(moves);
-	write(1, "\n", 1);
-}
+// static void print_moves(int moves)
+// {
+// 	write(1, "Moves: ", 7);
+// 	ft_putnbr(moves);
+// 	write(1, "\n", 1);
+// }
 
 static void check_exit(t_game *game)
 {
 	if(game->collectibles == 0)
 		{
 			(game->moves)++;
-			print_moves(game->moves);
+			//print_moves(game->moves);
 			write(1, "You Won !\n", 11);
 			exit(0);
 		}
@@ -62,25 +62,29 @@ void	move_player(t_game *game, int h, int v)               //horizontal, vertica
 
 	new_x = game->player_x + h;
 	new_y = game->player_y + v;
-	if (new_x < 0 || new_y < 0 || new_y >= game->height || new_x >= ft_strlen(game->map[new_y]))
-        return;
+	if (game->map[new_y] != NULL)
+	{
+		if (new_x < 0 || new_y < 0 || new_y >= game->height
+			|| new_x >= ft_strlen(game->map[new_y]))
+		return ;
+	}
 	new_tile = game->map[new_y][new_x];
 
 	set_player_direction(game, h, v);
 
 	if (new_tile == '1')
-		return;
+		return ;
 	if (new_tile == 'C')
 		(game->collectibles)--;
 	if (new_tile == 'E')
 	{
 		check_exit(game);
-		return;
+		return ;
 	}
 	if (new_tile == 'M')
 	{
 		write(1, "Game Over! You were caught by an enemy!\n", 41);
-		exit(0);
+		exit_game(game);
 	}
 
 	game->map[game->player_y][game->player_x] = '0';
@@ -88,14 +92,13 @@ void	move_player(t_game *game, int h, int v)               //horizontal, vertica
 	game->player_x = new_x;
 	game->player_y = new_y;
 	(game->moves)++;
-	print_moves(game->moves);
+	//print_moves(game->moves);
 	draw_map(game);
 }
 
 int	exit_game(t_game	*game)
 {
-	free_map(game->map, game->height);
-	mlx_destroy_window(game->mlx, game->window);
+	free_all(game);
 	exit(0);
 	return (0);
 }

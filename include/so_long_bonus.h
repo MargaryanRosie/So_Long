@@ -31,7 +31,7 @@ typedef struct s_game
 	int		collectibles;
 
 	t_enemy enemies[100];
-	void	*enemy_images[4];
+	//void	*enemy_images[4];
 	int enemy_count;
 	void	*collectible_images[3];
 	int	collectible_image;

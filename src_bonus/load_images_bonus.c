@@ -33,10 +33,10 @@ void	load_images(t_game *game)
 	game->img_player = game->img_player_f;     //by default
 	game->img_enemy = game->img_enemy_f;
 
-	game->enemy_images[0] = game->img_enemy_f;
-	game->enemy_images[1] = game->img_enemy_r;
-	game->enemy_images[2] = game->img_enemy_l;
-	game->enemy_images[3] = game->img_enemy_b;
+	// game->enemy_images[0] = game->img_enemy_f;
+	// game->enemy_images[1] = game->img_enemy_r;
+	// game->enemy_images[2] = game->img_enemy_l;
+	// game->enemy_images[3] = game->img_enemy_b;
 
 	game->collectible_images[0] = game->img_collectible;
 	game->collectible_images[1] = game->img_collectible_2;
