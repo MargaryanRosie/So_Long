@@ -49,7 +49,10 @@ void	load_images(t_game *game)
 		|| !game->img_wall_tl || !game->img_wall_tm || !game->img_wall_tr
 		|| !game->img_wall_stone || !game->img_floor
 		|| !game->img_player_f || !game->img_player_b || !game->img_player_r
-		|| !game->img_player_l || !game->img_exit || !game->img_collectible)
+		|| !game->img_player_l || !game->img_exit || !game->img_collectible
+		|| !game->img_collectible_2 || !game->img_collectible_3
+		|| !game->img_enemy_b || !game->img_enemy_f || !game->img_enemy_l
+		|| !game->img_enemy_r)
 	{
 		write(2, "Error: Failed to load one or more textures\n", 43);
 		exit(1);
