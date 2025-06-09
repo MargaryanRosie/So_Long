@@ -86,4 +86,5 @@ void	draw_map(t_game *game)
 		}
 		i++;
 	}
+	display_move_count(game);
 }

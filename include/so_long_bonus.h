@@ -116,6 +116,9 @@ void	move_player(t_game *game, int h, int v);
 int		exit_game(t_game *game);
 void	free_all(t_game *game);
 void	update_enemy_position(t_game *game);
-int	update_enemy_position_loop(void *parameter);
+int		update_enemy_position_loop(void *parameter);
+char	*ft_itoa(int n);
+char	*ft_strjoin(char *s1, char	*s2);
+void	display_move_count(t_game *game);
 
 #endif

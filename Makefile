@@ -32,7 +32,8 @@ SRC_BONUS = src_bonus/map_bonus/map_bonus.c \
 	src_bonus/main_bonus.c \
 	src_bonus/movement_bonus/input_bonus.c \
 	src_bonus/utils_bonus.c \
-	src_bonus/load_images_bonus.c 
+	src_bonus/load_images_bonus.c \
+	src_bonus/screen/display_move_count.c
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
