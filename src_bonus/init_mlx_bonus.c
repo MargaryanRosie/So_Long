@@ -25,6 +25,11 @@ static void set_game_state(t_game *game)
 				game->enemies[game->enemy_count].x = j;
 				game->enemies[game->enemy_count].y = i;
 				(game->enemy_count)++;
+				if (game->enemy_count >= 100)
+				{
+					write(2, "Error: Too many enemies!\n", 25);
+					exit(1);
+				}
 			}
 			j++;
 		}

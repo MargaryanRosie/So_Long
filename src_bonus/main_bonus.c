@@ -28,10 +28,16 @@ int	main(int argc, char *argv[])
 		write(2, "Error\nInvalid number of parameters\n", 36);
 		return (1);
 	}
-	t_game	game;
+	t_game	game = {0};
 	char	temp_map[10000];
 
 	check_map(&game, argv[1], temp_map);
+
+	if (!game.map)
+	{
+    	write(2, "Error: Map not initialized!\n", 28);
+    	exit(1);
+	}
 
 	game_init(&game, game.map);
 	load_images(&game);
