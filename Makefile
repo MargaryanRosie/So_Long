@@ -1,7 +1,7 @@
 NAME = so_long
 NAME_BONUS = so_long_bonus
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror -Iinclude -Imlx
+CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx
 
 SRC = src/map/map_utils.c \
 	src/map/map.c \
