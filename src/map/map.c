@@ -1,6 +1,6 @@
 #include "../include/so_long.h"
 
-int read_map(char *filename, char *temp_map)
+int	read_map(char *filename, char *temp_map)
 {
 	char	ch;
 	int		fd;
@@ -12,7 +12,6 @@ int read_map(char *filename, char *temp_map)
 		return (1);
 	i = 0;
 	bytes_read = read(fd, &ch, 1);
-	//printf("first element: %c\n", temp_map[i]);
 	while (bytes_read > 0)
 	{
 		temp_map[i] = ch;
@@ -36,7 +35,6 @@ char	**fill_2d_array(char *temp_map)
 {
 	int		row;
 	int		pos;
-	//int		line_len;
 	int		this_line_len;
 	int		line_count;
 
@@ -45,7 +43,6 @@ char	**fill_2d_array(char *temp_map)
 	if (!temp_map)
 		return (NULL);
 	line_count = count_lines(temp_map);
-	//line_len = line_length(temp_map);
 	map_2d = allocate_map(line_count);
 	if (!map_2d)
 		return (NULL);
@@ -57,7 +54,6 @@ char	**fill_2d_array(char *temp_map)
 		while (temp_map[this_line_len + pos] && temp_map[this_line_len + pos] != '\n')
 			this_line_len++;
 		map_2d[row] = allocate_line(this_line_len);
-		//printf("line %d, position %d, line length %d\n", row, pos, this_line_len);
 		if (!map_2d[row])
 		{
 			write(2, "Allocation for line failed", 27);

@@ -4,6 +4,8 @@
 
 static void	check_map(t_game *game, char *s, char *temp_map)
 {
+	if (!game)
+		exit(1);
 	if (read_map(s, temp_map) != 0)
 	{
 		write(2, "Error\nFailed to read map\n", 26);
@@ -24,17 +26,18 @@ static void	check_map(t_game *game, char *s, char *temp_map)
 
 int	main(int argc, char *argv[])
 {
+	t_game	game = {0};
+	char	temp_map[1000] = {0};
+
 	if (argc != 2)
 	{
 		write(2, "Error\nInvalid number of parameters\n", 36);
 		return (1);
 	}
-	t_game	game;
-	char	temp_map[10000];
 
 	check_map(&game, argv[1], temp_map);
 
-		if (!game.map)
+	if (!game.map)
 	{
 		write(2, "Error: Map is NULL!\n", 20);
 		exit(1);

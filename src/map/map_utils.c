@@ -7,13 +7,13 @@ int count_lines(char *temp_map)
 	int	line_count;
 	int	i;
 
-	if(temp_map == NULL)
+	if (temp_map == NULL)
 		return 0;
 	line_count = 0;
 	i = 0;
-	while(temp_map[i])
+	while (temp_map[i])
 	{
-		if(temp_map[i] == '\n')
+		if (temp_map[i] == '\n')
 			line_count++;
 		i++;
 	}
@@ -24,10 +24,10 @@ int line_length(char *temp_map)
 {
 	int	line_len;
 
-	if(temp_map == NULL)
+	if (temp_map == NULL)
 		return (0);
 	line_len = 0;
-	while(temp_map[line_len] != '\n' && temp_map[line_len])
+	while (temp_map[line_len] != '\n' && temp_map[line_len])
 	{
 		line_len++;
 	}
@@ -39,7 +39,7 @@ char **allocate_map(int line_count)
 	char **map_2d;
 
 	map_2d = (char**)malloc((line_count + 1) * sizeof(char *));
-	if(!map_2d)
+	if (!map_2d)
 		return (NULL);
 	map_2d[line_count] = NULL;
 	return (map_2d);
@@ -47,7 +47,7 @@ char **allocate_map(int line_count)
 
 char *allocate_line(int line_length)
 {
-	char *line;
+	char	*line;
 
 	line = (char *)malloc((line_length + 1) * sizeof(char));
 	if (!line)
@@ -78,5 +78,5 @@ int	ft_strlen(char *s)
 	i = 0;
 	while (s[i])
 		i++;
-	return(i);
+	return (i);
 }

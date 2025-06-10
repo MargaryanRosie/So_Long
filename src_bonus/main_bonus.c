@@ -25,7 +25,7 @@ int	main(int argc, char *argv[])
 {
 	printf("1");
 	t_game	game = {0};
-	char	temp_map[10000];
+	char	temp_map[1000] = {0};
 
 	if (argc != 2)
 	{
