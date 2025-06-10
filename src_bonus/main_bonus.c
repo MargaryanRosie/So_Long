@@ -3,6 +3,8 @@
 
 static void	check_map(t_game *game, char *s, char *temp_map)
 {
+	int	i;
+
 	if (read_map(s, temp_map) != 0)
 	{
 		write(2, "Error\nFailed to read map\n", 26);
@@ -14,9 +16,16 @@ static void	check_map(t_game *game, char *s, char *temp_map)
 		write(2, "Error\nFailed to convert map\n", 29);
 		exit(2);
 	}
-	if (!validate_map(game->map))
+
+	int result = validate_map(game->map);
+
+	i = 0;
+	while(game->map[i])
+		i++;
+	if (!result)
 	{
-		free_map(game->map, game->height);
+		printf("freeing map with height %d\n", i);
+		free_map(game->map, i);
 		exit(3);
 	}
 }
