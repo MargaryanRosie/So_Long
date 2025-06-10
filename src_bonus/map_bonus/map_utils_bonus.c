@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../include/so_long_bonus.h"
 
-int count_lines(char *temp_map)
+int	count_lines(char *temp_map)
 {
 	int	line_count;
 	int	i;
@@ -17,7 +17,7 @@ int count_lines(char *temp_map)
 			line_count++;
 		i++;
 	}
-	return (line_count + 1);     //cause in the last line there is no newline
+	return (line_count + 1);
 }
 
 int line_length(char *temp_map)
@@ -47,7 +47,7 @@ char **allocate_map(int line_count)
 
 char *allocate_line(int line_length)
 {
-	char *line;
+	char	*line;
 
 	line = (char *)malloc((line_length + 1) * sizeof(char));
 	if (!line)
@@ -56,7 +56,7 @@ char *allocate_line(int line_length)
 	return (line);
 }
 
-void fill_line(char *line, char *temp_map, int *index)
+void	fill_line(char *line, char *temp_map, int *index)
 {
 	int	i;
 

@@ -63,7 +63,6 @@ char	**fill_2d_array(char *temp_map)
 			return (NULL);
 		}
 		fill_line(map_2d[row], temp_map, &pos);
-		printf("line %d: %s, last char: %c\n", row, map_2d[row], map_2d[row][6]);
 		row++;
 	}
 	return (map_2d);

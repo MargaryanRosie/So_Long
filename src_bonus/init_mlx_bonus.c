@@ -17,9 +17,7 @@ static void set_game_state(t_game *game)
 				game->player_y = i;
 			}
 			else if (game->map[i][j] == 'C')
-			{
 				game->collectibles++;
-			}
 			else if (game->map[i][j] == 'M')
 			{
 				game->enemies[game->enemy_count].x = j;
@@ -83,7 +81,8 @@ void	game_init(t_game *game, char **map)
 	{
 		game->height++;
 	}
-	game->width = ft_strlen(map[0]);
+	if (map[0] != NULL)
+		game->width = ft_strlen(map[0]);
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, game->width * TILE_SIZE, game->height * TILE_SIZE, "So Long Bonus");
 	game->moves = 0;

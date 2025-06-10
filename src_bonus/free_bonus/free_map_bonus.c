@@ -2,6 +2,8 @@
 
 void free_map(char **map_2d, int rows_allocated)
 {
+	if(!map_2d)
+		return ;
 	int	i;
 
 	i = 0;

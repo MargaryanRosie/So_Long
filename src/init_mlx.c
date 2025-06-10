@@ -36,7 +36,8 @@ void	game_init(t_game *game, char **map)
 	{
 		game->height++;
 	}
-	game->width = ft_strlen(map[0]);
+	if(map[0] != NULL)
+		game->width = ft_strlen(map[0]);
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, game->width * TILE_SIZE, game->height * TILE_SIZE, "So Long");
 	game->moves = 0;

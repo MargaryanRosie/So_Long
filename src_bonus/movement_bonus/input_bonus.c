@@ -6,15 +6,13 @@ int	handle_keypress(int keycode, t_game *game)
 	if (keycode == 65307)                 //esc
 	{
 		write(2, "Game Closed!", 13);
-		exit(0);
+		exit_game(game);
 	}
 	if (keycode == 'w')
 		move_player(game, 0, -1);
 	else if (keycode == 's')
 	{
-		printf("initial pos: (%d, %d)\n", game->player_x, game->player_y);
 		move_player(game, 0, 1);
-		printf("new_pos: (%d, %d)\n", game->player_x, game->player_y);
 	}
 	else if (keycode == 'a')
 		move_player(game, -1, 0);
@@ -23,21 +21,14 @@ int	handle_keypress(int keycode, t_game *game)
 	return (0);
 }
 
-// static void print_moves(int moves)
-// {
-// 	write(1, "Moves: ", 7);
-// 	ft_putnbr(moves);
-// 	write(1, "\n", 1);
-// }
 
 static void check_exit(t_game *game)
 {
 	if(game->collectibles == 0)
 		{
 			(game->moves)++;
-			//print_moves(game->moves);
 			write(1, "You Won !\n", 11);
-			exit(0);
+			exit_game(game);
 		}
 }
 
