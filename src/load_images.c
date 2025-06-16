@@ -32,7 +32,7 @@ void	load_images(t_game *game)
 		|| !game->img_player_f || !game->img_player_b || !game->img_player_r
 		|| !game->img_player_l || !game->img_exit || !game->img_collectible)
 	{
-		write(2, "Error: Failed to load one or more textures\n", 43);
+		write(2, "Error: Failed to load one or more textures\n", 44);
 		exit(1);
 	}
 }

@@ -74,9 +74,9 @@ int has_valid_num_of_elements(char **map)
 {
 	int	i;
 	int	j;
-	int c;
-	int p;
-	int e;
+	int	c;
+	int	p;
+	int	e;
 
 	c = 0;
 	p = 0;

@@ -46,7 +46,7 @@ int	main(int argc, char *argv[])
 
 	if (!game.map)
 	{
-		write(2, "Error: Map is NULL!\n", 20);
+		write(2, "Error: Map is NULL!\n", 21);
 		exit(1);
 	}
 

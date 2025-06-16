@@ -21,7 +21,7 @@ int read_map(char *filename, char *temp_map)
 	}
 	if (i == 0)
 	{
-		write(2, "The file is empty\n", 18);
+		write(2, "The file is empty\n", 19);
 		exit(2);
 	}
 	if (bytes_read < 0)
