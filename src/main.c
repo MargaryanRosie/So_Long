@@ -4,7 +4,10 @@
 
 static void	check_map(t_game *game, char *s, char *temp_map)
 {
-	int	i;
+	int		i;
+	int		result;
+	char	*cleaned;
+
 	if (!game)
 		exit(1);
 	if (read_map(s, temp_map) != 0)
@@ -12,22 +15,31 @@ static void	check_map(t_game *game, char *s, char *temp_map)
 		write(2, "Error\nFailed to read map\n", 26);
 		exit (1);
 	}
-	game->map = fill_2d_array(temp_map);
+	printf("temp\n%s\n", temp_map);
+	cleaned = clean_map_string(temp_map);
+	printf("cleaned\n%s\n", cleaned);
+	if (!cleaned)
+	{
+		write(2, "Error\nFailed to clean up the map\n", 33);
+		exit(2);
+	}
+	game->map = fill_2d_array(cleaned);
+	free(cleaned);
 	if (!game->map)
 	{
 		write(2, "Error\nFailed to convert map\n", 29);
-		exit(2);
+		exit(3);
 	}
-	int result = validate_map(game->map);
+	result = validate_map(game->map);
 
 	i = 0;
-	while(game->map[i])
+	while (game->map[i])
 		i++;
 	if (!result)
 	{
 		printf("freeing map with height %d\n", i);
 		free_map(game->map, i);
-		exit(3);
+		exit(4);
 	}
 }
 
@@ -41,9 +53,7 @@ int	main(int argc, char *argv[])
 		write(2, "Error\nInvalid number of parameters\n", 36);
 		return (1);
 	}
-
 	check_map(&game, argv[1], temp_map);
-
 	if (!game.map)
 	{
 		write(2, "Error: Map is NULL!\n", 21);

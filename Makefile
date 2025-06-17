@@ -1,7 +1,7 @@
 NAME = so_long
 NAME_BONUS = so_long_bonus
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx
+CFLAGS = -g -fsanitize=address -Wall -Wextra -Werror -Iinclude -Imlx
 
 SRC = src/map/map_utils.c \
 	src/map/map.c \
@@ -15,7 +15,10 @@ SRC = src/map/map_utils.c \
 	src/main.c \
 	src/movement/input.c \
 	src/utils.c \
-	src/free/free.c
+	src/free/free.c \
+	src/map/ft_split_utils.c \
+	src/map/ft_split.c \
+	src/map/clean_map_string.c
 
 
 OBJ = $(SRC:.c=.o)

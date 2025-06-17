@@ -75,5 +75,8 @@ int		handle_keypress(int keycode, t_game *game);
 void	move_player(t_game *game, int h, int v);
 int		exit_game(t_game *game);
 void	free_all(t_game *game);
+char	*ft_strtrim(char *s, char *set);
+char	*ft_strjoin_with_newline(char *s1, char *s2);
+char	*clean_map_string(char *temp_map);
 
 #endif
