@@ -53,7 +53,7 @@ int		update_enemy_position_loop(void *parameter)        //loop hooky spasum e in
 
 	game = (t_game *)parameter;
 	count++;                //every time this function is called, count is incremented
-	if (count > 1000)
+	if (count > 1800)
 	{
 		update_enemy_position(game);
 		draw_map(game);

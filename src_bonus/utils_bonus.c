@@ -62,31 +62,58 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
+char	*ft_strjoin_with_newline(char *s1, char *s2)
+{
+	char	*ptr;
+	char	*start;
+
+	if (!s1 || !s2)
+		return (NULL);
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
+	if (!ptr)
+		return (NULL);
+	start = ptr;
+	while (*s1)
+	{
+		*ptr = *s1;
+		ptr++;
+		s1++;
+	}
+	*ptr = '\n';
+	ptr++;
+	while (*s2)
+	{
+		*ptr = *s2;
+		ptr++;
+		s2++;
+	}
+	*ptr = '\0';
+	return (start);
+}
+
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int		len1;
-	int		len2;
-	char	*res;
-	int		i;
-	int		j;
+	char	*ptr;
+	char	*start;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	res = (char *)malloc(len1 + len2 + 1);
-	i = 0;
-	j = 0;
-	if (!res)
+	if (!s1 || !s2)
 		return (NULL);
-	while (s1[i])
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!ptr)
+		return (NULL);
+	start = ptr;
+	while (*s1)
 	{
-		res[i] = s1[i];
-		i++;
+		*ptr = *s1;
+		ptr++;
+		s1++;
 	}
-	while (s2[j])
+	while (*s2)
 	{
-		res[i + j] = s2[j];
-		j++;
+		*ptr = *s2;
+		ptr++;
+		s2++;
 	}
-	res[i + j] = '\0';
-	return (res);
+	*ptr = '\0';
+	return (start);
 }
