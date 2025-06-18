@@ -1,5 +1,4 @@
 #include "../include/so_long_bonus.h"
-//• The map can be composed of only these 5 characters
 
 int	has_valid_components(char **map)
 {
@@ -73,7 +72,6 @@ static void	count_elements(char ch, t_counter *count)
 		(count->enm)++;
 }
 
-
 int	has_valid_num_of_elements(char **map)
 {
 	int			i;
@@ -94,55 +92,7 @@ int	has_valid_num_of_elements(char **map)
 			j++;
 		}
 		i++;
-
 	}
 	return (counter.c >= 1 && counter.enm >= 1 
 		&& counter.p == 1 && counter.e == 1);
 }
-
-int	is_rectangular(char **map)
-{
-	int	i;
-	int	first_len;
-
-	if (!map || !map[0])
-		return (0);
-	first_len = ft_strlen(map[0]);
-	i = 1;
-	while (map[i])
-	{
-		if (first_len != ft_strlen(map[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-
-int is_surrounded_by_walls(char **map)
-{
-	int	i;
-	int	height;
-	int	width;
-
-	height = 0;
-	while (map[height])
-		height++;
-	width = ft_strlen(map[0]);
-	i = 0;
-	while (map[0][i] && map[height - 1][i])
-	{
-		if (map[0][i] != '1' || map[height - 1][i] != '1')
-			return (0);
-		i++;
-	}
-	i = 0;
-	while (map[i])
-	{
-		if (map[i][0] != '1' || map[i][width - 1] != '1')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-

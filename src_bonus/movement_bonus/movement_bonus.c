@@ -1,6 +1,5 @@
 #include "../include/so_long_bonus.h"
 
-
 static void	check_conditions(t_game *game, int new_x, int new_y, int i)
 {
 	if (game->map[new_y][new_x] != '1' && game->map[new_y][new_x] != 'M'
@@ -44,8 +43,6 @@ void	update_enemy_position(t_game *game)
 	}
 }
 
-
-
 int		update_enemy_position_loop(void *parameter)        //loop hooky spasum e int veradardznox funkciayi, dra hamar int return type
 {
 	static int	count = 0;
@@ -60,6 +57,5 @@ int		update_enemy_position_loop(void *parameter)        //loop hooky spasum e in
 		count = 0;
 		game->collectible_image = (game->collectible_image + 1) % 3;
 	}
-
 	return (0);
 }

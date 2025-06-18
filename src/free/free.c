@@ -37,3 +37,10 @@ void	free_all(t_game *game)
 	mlx_destroy_window(game->mlx, game->window);
 	free_map(game->map, game->height);
 }
+
+int	exit_game(t_game *game)
+{
+	free_map(game->map, game->height);
+	mlx_destroy_window(game->mlx, game->window);
+	exit(0);
+}

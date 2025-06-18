@@ -4,6 +4,16 @@
 
 #include "../include/so_long_bonus.h"
 
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
 static int	is_in_set(char c, char *set)
 {
 	int	i;

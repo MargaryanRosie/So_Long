@@ -2,7 +2,7 @@
 
 void	draw_tile(t_game *game, void *img, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx, game->window, img, x * TILE_SIZE, y * TILE_SIZE);       //It draws one image (tile) on the window at a specific location.
+	mlx_put_image_to_window(game->mlx, game->window, img, x * TILE_SIZE, y * TILE_SIZE);
 }
 
 void	draw_map(t_game *game)

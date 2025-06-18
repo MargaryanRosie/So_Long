@@ -1,12 +1,14 @@
 NAME = so_long
 NAME_BONUS = so_long_bonus
 CC = cc
-CFLAGS = -g -fsanitize=address -Wall -Wextra -Werror -Iinclude -Imlx
+CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx
 
 SRC = src/map/map_utils.c \
-	src/map/map.c \
+	src/map/read_map.c \
+	src/map/fill_2d.c \
 	src/validation/validate_map.c \
 	src/validation/validate_map_utils.c \
+	src/validation/validate_path_utils.c \
 	src/validation/validate_path.c \
 	src/draw_image.c \
 	src/draw_image_2.c \
@@ -14,6 +16,7 @@ SRC = src/map/map_utils.c \
 	src/load_images.c \
 	src/main.c \
 	src/movement/input.c \
+	src/movement/player_movement.c \
 	src/utils.c \
 	src/free/free.c \
 	src/map/ft_split_utils.c \
@@ -25,14 +28,17 @@ SRC = src/map/map_utils.c \
 
 OBJ = $(SRC:.c=.o)
 
-SRC_BONUS = src_bonus/map_bonus/map_bonus.c \
+SRC_BONUS = src_bonus/map_bonus/read_map_bonus.c \
+	src_bonus/map_bonus/fill_2d_bonus.c \
 	src_bonus/map_bonus/map_utils_bonus.c \
 	src_bonus/validation_bonus/validate_map_bonus.c \
 	src_bonus/validation_bonus/validate_path_bonus.c \
+	src_bonus/validation_bonus/validate_path_utils_bonus.c \
 	src_bonus/validation_bonus/validate_map_utils_bonus.c \
 	src_bonus/free_bonus/free_map_bonus.c \
 	src_bonus/init_mlx_bonus.c \
 	src_bonus/movement_bonus/movement_bonus.c \
+	src_bonus/movement_bonus/player_movement_bonus.c \
 	src_bonus/draw_image_bonus.c \
 	src_bonus/main_bonus.c \
 	src_bonus/movement_bonus/input_bonus.c \
@@ -43,7 +49,8 @@ SRC_BONUS = src_bonus/map_bonus/map_bonus.c \
 	src_bonus/map_bonus/ft_split_utils.c \
 	src_bonus/map_bonus/clean_map_string_bonus.c \
 	src_bonus/map_bonus/clean_utils_bonus.c \
-	src_bonus/map_bonus/ft_strtrim.c
+	src_bonus/map_bonus/ft_strtrim.c \
+	src_bonus/map_bonus/ft_strjoin.c
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 

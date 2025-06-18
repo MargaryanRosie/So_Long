@@ -14,7 +14,6 @@ char	*clean_map_string(char *temp_map)
 	if (!lines)
 		return (NULL);
 	get_line_bounds(lines, &start, &end);
-	printf("start: %d\nend: %d\n", start, end);
 	cleaned_temp = join_cleaned_lines(lines, start, end);
 	if (!cleaned_temp)
 	{

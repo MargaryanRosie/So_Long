@@ -1,6 +1,6 @@
 #include "../include/so_long.h"
 
-static void set_game_state(t_game *game)
+static void	set_game_state(t_game *game)
 {
 	int	i;
 	int	j;
@@ -13,12 +13,12 @@ static void set_game_state(t_game *game)
 		{
 			if (game->map[i][j] == 'P')
 			{
-				game->player_x = j;                                //we set the position in the struct
+				game->player_x = j;
 				game->player_y = i;
 			}
 			else if (game->map[i][j] == 'C')
 			{
-				game->collectibles++;                       //we count the collectbles in the struct 
+				game->collectibles++;
 			}
 			j++;
 		}
@@ -26,20 +26,17 @@ static void set_game_state(t_game *game)
 	}
 }
 
-
 void	game_init(t_game *game, char **map)
 {
 	game->map = map;
-
 	game->height = 0;
 	while (map[game->height])
-	{
 		game->height++;
-	}
-	if(map[0] != NULL)
+	if (map[0] != NULL)
 		game->width = ft_strlen(map[0]);
 	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, game->width * TILE_SIZE, game->height * TILE_SIZE, "So Long");
+	game->window = mlx_new_window(game->mlx, game->width * TILE_SIZE,
+			game->height * TILE_SIZE, "So Long");
 	game->moves = 0;
 	game->collectibles = 0;
 	set_game_state(game);

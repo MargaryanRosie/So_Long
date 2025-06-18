@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "../include/so_long.h"
 
 static int	is_in_set(char c, char *set)

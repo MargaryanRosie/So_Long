@@ -58,8 +58,6 @@ char	**ft_split(char *str)
 	output[wc] = NULL;
 	return (output);
 }
-
-
 // int main()
 // {
 // 	char str[] = "hello\nworld\nhh\naaa\nyes\n";
