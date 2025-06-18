@@ -1,14 +1,14 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <../mlx/mlx.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <errno.h>
+# include <stdlib.h>
+# include <../mlx/mlx.h>
 
-#define TILE_SIZE 96
+# define TILE_SIZE 96
 
 typedef struct s_game
 {
@@ -38,7 +38,7 @@ typedef struct s_game
 	void	*img_player_l;
 	void	*img_exit;
 	void	*img_collectible;
-} t_game;
+}	t_game;
 
 int		count_lines(char *temp_map);
 int		line_length(char *temp_map);
@@ -80,6 +80,9 @@ char	*ft_strjoin_with_newline(char *s1, char *s2);
 char	*clean_map_string(char *temp_map);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strjoin(char *s1, char *s2);
-
+void	get_line_bounds(char **lines, int *start, int *end);
+char	*append_trimmed_line(char *cleaned_temp, char *line, char *set);
+char	*join_cleaned_lines(char **lines, int start, int end);
+void	free_split(char **split);
 
 #endif

@@ -8,7 +8,6 @@ int	word_count(char *str)
 
 	i = 0;
 	wc = 0;
-
 	while (str[i])
 	{
 		while (str[i] && str[i] == '\n')
@@ -53,14 +52,12 @@ char	**ft_split(char *str)
 	while (str[i])
 	{
 		skip_spaces(str, &i);
-		if(!process_word(output, str, &i, &j))
+		if (!process_word(output, str, &i, &j))
 			return (NULL);
 	}
 	output[wc] = NULL;
 	return (output);
 }
-
-
 // int main()
 // {
 // 	char str[] = "hello\nworld\nhh\naaa\nyes\n";

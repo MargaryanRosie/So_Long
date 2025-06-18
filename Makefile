@@ -18,7 +18,9 @@ SRC = src/map/map_utils.c \
 	src/free/free.c \
 	src/map/ft_split_utils.c \
 	src/map/ft_split.c \
-	src/map/clean_map_string.c
+	src/map/clean_utils.c \
+	src/map/clean_map_string.c \
+	src/map/ft_strtrim.c 
 
 
 OBJ = $(SRC:.c=.o)
@@ -40,6 +42,8 @@ SRC_BONUS = src_bonus/map_bonus/map_bonus.c \
 	src_bonus/map_bonus/ft_split.c \
 	src_bonus/map_bonus/ft_split_utils.c \
 	src_bonus/map_bonus/clean_map_string_bonus.c \
+	src_bonus/map_bonus/clean_utils_bonus.c \
+	src_bonus/map_bonus/ft_strtrim.c
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 

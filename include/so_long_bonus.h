@@ -1,21 +1,21 @@
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <../mlx/mlx.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <errno.h>
+# include <stdlib.h>
+# include <../mlx/mlx.h>
 
-#define TILE_SIZE 96
+# define TILE_SIZE 96
 
 typedef struct s_enemy
 {
 	int	x;
 	int	y;
-	int	dx;               //horizontal
-	int dy;               //vertical
+	int	dx;
+	int dy;
 }t_enemy;
 
 typedef struct s_game
@@ -30,12 +30,10 @@ typedef struct s_game
 	int		moves;
 	int		collectibles;
 
-	t_enemy enemies[100];
-	//void	*enemy_images[4];
-	int enemy_count;
+	t_enemy	enemies[100];
+	int		enemy_count;
 	void	*collectible_images[3];
-	int	collectible_image;
-	
+	int		collectible_image;	
 	void	*img_wall_ml;
 	void	*img_wall_rd;
 	void	*img_wall_dl;
@@ -60,8 +58,7 @@ typedef struct s_game
 	void	*img_collectible;
 	void	*img_collectible_2;
 	void	*img_collectible_3;
-} t_game;
-
+}	t_game;
 
 typedef struct s_counter
 {
@@ -69,8 +66,7 @@ typedef struct s_counter
 	int	c;
 	int	e;
 	int	enm;
-}t_counter;
-
+}	t_counter;
 
 typedef struct s_components
 {
@@ -78,7 +74,7 @@ typedef struct s_components
 	int	walls;
 	int	space;
 	int	enemy;
-}t_components;
+}	t_components;
 
 int		count_lines(char *temp_map);
 int		line_length(char *temp_map);
@@ -124,5 +120,10 @@ char	*ft_strtrim(char *s, char *set);
 char	*ft_strjoin_with_newline(char *s1, char *s2);
 char	*clean_map_string(char *temp_map);
 char	*ft_strjoin(char *s1, char *s2);
+void	get_line_bounds(char **lines, int *start, int *end);
+char	*append_trimmed_line(char *cleaned_temp, char *line, char *set);
+char	*join_cleaned_lines(char **lines, int start, int end);
+void	free_split(char **split);
+
 
 #endif

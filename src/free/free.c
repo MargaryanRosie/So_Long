@@ -1,11 +1,11 @@
 #include "../include/so_long.h"
 
-void free_map(char **map_2d, int rows_allocated)
+void	free_map(char **map_2d, int rows_allocated)
 {
-	if(!map_2d)
-		return ;
 	int	i;
 
+	if (!map_2d)
+		return ;
 	i = 0;
 	while (i < rows_allocated)
 	{

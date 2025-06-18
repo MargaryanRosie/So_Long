@@ -34,7 +34,7 @@ int	allocate_word(char **output, char *str, int start, int i, int j)
 	int	word_len;
 
 	word_len = i - start;
-	output[j] = (char*)malloc(sizeof(char) * (word_len + 1));
+	output[j] = (char *)malloc(sizeof(char) * (word_len + 1));
 	if (!output[j])
 	{
 		free_remaining(output, j);
@@ -46,11 +46,11 @@ int	allocate_word(char **output, char *str, int start, int i, int j)
 
 int	process_word(char **output, char *str, int *i, int *j)
 {
-	int start;
+	int	start;
 
 	start = *i;
 	loop_the_word(str, i);
-	if(*i > start)
+	if (*i > start)
 	{
 		if (!allocate_word(output, str, start, *i, *j))
 			return (0);

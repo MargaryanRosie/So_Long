@@ -1,15 +1,21 @@
 #include "../include/so_long.h"
 
-int	read_map(char *filename, char *temp_map)
+static int	open_map_file(char *filename)
 {
-	char	ch;
-	int		fd;
-	int		bytes_read;
-	int		i;
+	int	fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (1);
+		write(2, "Error\ncannot open file\n", 24);
+	return (fd);
+}
+
+static int	read_into_buffer(int fd, char *temp_map)
+{
+	int	bytes_read;
+	int	i;
+	char	ch;
+
 	i = 0;
 	bytes_read = read(fd, &ch, 1);
 	while (bytes_read > 0)
@@ -17,16 +23,27 @@ int	read_map(char *filename, char *temp_map)
 		temp_map[i] = ch;
 		i++;
 		bytes_read = read(fd, &ch, 1);
-
 	}
 	if (i == 0)
 	{
 		write(2, "The file is empty\n", 18);
 		exit(2);
 	}
+	temp_map[i] = '\0';
+	return (bytes_read);
+}
+
+int	read_map(char *filename, char *temp_map)
+{
+	int		fd;
+	int		bytes_read;
+
+	fd = open_map_file(filename);
+	if (fd < 0)
+		return (1);
+	bytes_read = read_into_buffer(fd, temp_map);
 	if (bytes_read < 0)
 		return (1);
-	temp_map[i] = '\0';
 	close(fd);
 	return (bytes_read);
 }
@@ -37,7 +54,6 @@ char	**fill_2d_array(char *temp_map)
 	int		pos;
 	int		this_line_len;
 	int		line_count;
-
 	char	**map_2d;
 
 	if (!temp_map)
@@ -51,7 +67,8 @@ char	**fill_2d_array(char *temp_map)
 	while (row < line_count)
 	{
 		this_line_len = 0;
-		while (temp_map[this_line_len + pos] && temp_map[this_line_len + pos] != '\n')
+		while (temp_map[this_line_len + pos]
+			&& temp_map[this_line_len + pos] != '\n')
 			this_line_len++;
 		map_2d[row] = allocate_line(this_line_len);
 		if (!map_2d[row])
