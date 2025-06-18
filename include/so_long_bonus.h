@@ -123,5 +123,6 @@ void	display_move_count(t_game *game);
 char	*ft_strtrim(char *s, char *set);
 char	*ft_strjoin_with_newline(char *s1, char *s2);
 char	*clean_map_string(char *temp_map);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif

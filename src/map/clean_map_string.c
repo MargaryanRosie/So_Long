@@ -45,6 +45,12 @@ char	*clean_map_string(char *temp_map)
 	lines = ft_split(temp_map);
 	if (!lines)
 		return (NULL);
+	int i = 0;
+	while (lines[i])
+	{
+		printf("line[%d]: %s\n",i, lines[i]);
+		i++;
+	}
 	start = 0;      //first line
 	while (lines[start] && is_all_spaces(lines[start]))
 		start++;
@@ -60,6 +66,7 @@ char	*clean_map_string(char *temp_map)
 	while (start <= end)
 	{
 		trimmed_line = ft_strtrim(lines[start], set);
+		printf("trimmed line: %s\n", trimmed_line);
 
 		if (!trimmed_line)
 		{
@@ -67,12 +74,17 @@ char	*clean_map_string(char *temp_map)
 			free_split(lines);
 			return (NULL);
 		}
-		tmp = ft_strjoin_with_newline(cleaned_temp, trimmed_line);
+		if (cleaned_temp[0] != '\0')
+			tmp = ft_strjoin_with_newline(cleaned_temp, trimmed_line);
+		else
+			tmp = ft_strjoin(cleaned_temp, trimmed_line);
+		printf("cleaned_temp: %s\n", cleaned_temp);
 		free(cleaned_temp);
 		free(trimmed_line);
 		if (!tmp)
 		{
 			free_split(lines);
+			free(cleaned_temp);
 			return (NULL);
 		}
 		cleaned_temp = tmp;

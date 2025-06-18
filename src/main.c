@@ -20,10 +20,16 @@ static void	check_map(t_game *game, char *s, char *temp_map)
 	printf("cleaned\n%s\n", cleaned);
 	if (!cleaned)
 	{
-		write(2, "Error\nFailed to clean up the map\n", 33);
+		write(2, "Error\nFailed to clean up the map\n", 34);
 		exit(2);
 	}
 	game->map = fill_2d_array(cleaned);
+	int k = 0;
+	while (game->map[k])
+	{
+		printf("%d: %saaaa\n", k, game->map[k]);
+		k++;
+	}
 	free(cleaned);
 	if (!game->map)
 	{
@@ -56,7 +62,7 @@ int	main(int argc, char *argv[])
 	check_map(&game, argv[1], temp_map);
 	if (!game.map)
 	{
-		write(2, "Error: Map is NULL!\n", 21);
+		write(2, "Error\nMap is NULL!\n", 20);
 		exit(1);
 	}
 
