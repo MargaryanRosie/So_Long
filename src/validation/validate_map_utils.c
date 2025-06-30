@@ -1,5 +1,6 @@
 #include "../include/so_long.h"
 
+//check if there are no other invalid components
 int	has_valid_components(char **map)
 {
 	int	i;
@@ -31,6 +32,8 @@ static void	set_flags(char c, int *col, int *wall, int *space)
 		*space = 1;
 }
 
+
+//check if the map has the 3 basic components(col, wall, space)
 int	has_basic_components(char **map)
 {
 	int	collectibles;
@@ -68,6 +71,7 @@ static void	count_elements(char ch, int *c, int *p, int *e)
 		(*e)++;
 }
 
+//check if the number of components is valid
 int	has_valid_num_of_elements(char **map)
 {
 	int	i;

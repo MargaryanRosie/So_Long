@@ -1,5 +1,6 @@
 #include "../include/so_long.h"
 #include "../include/ft_split.h"
+#include "../get_next_line/get_next_line.h"
 
 void	free_remaining(char **output, int j)
 {
@@ -13,7 +14,7 @@ void	free_remaining(char **output, int j)
 	output = NULL;
 }
 
-char *ft_strncpy(char *dest, char *src, int n)
+char	*ft_strncpy(char *dest, char *src, int n)
 {
 	int	i;
 

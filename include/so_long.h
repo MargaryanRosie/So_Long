@@ -40,12 +40,13 @@ typedef struct s_game
 	void	*img_collectible;
 }	t_game;
 
-int		count_lines(char *temp_map);
+int		count_lines(int fd, char *filename);
+int		line_length(int fd, char *filename);
 char	**allocate_map(int line_count);
 char	*allocate_line(int line_length);
 void	free_map(char **map_2d, int rows_allocated);
 int		read_map(char *filename, char *temp_map);
-char	**fill_2d_array(char *temp_map);
+char	**fill_2d_array(int fd, char *filename);
 void	fill_line(char *line, char *temp_map, int *index);
 int		is_valid_path(char **map);
 int		check_if_unreachable(char **copy);
@@ -78,7 +79,7 @@ char	*ft_strtrim(char *s, char *set);
 char	*ft_strjoin_with_newline(char *s1, char *s2);
 char	*clean_map_string(char *temp_map);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strjoin(char *s1, char *s2);
+//char	*ft_strjoin(char *s1, char *s2);
 void	get_line_bounds(char **lines, int *start, int *end);
 char	*append_trimmed_line(char *cleaned_temp, char *line, char *set);
 char	*join_cleaned_lines(char **lines, int start, int end);

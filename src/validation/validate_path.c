@@ -1,4 +1,5 @@
 #include "../include/so_long.h"
+#include "../get_next_line/get_next_line.h"
 
 int	is_valid_path(char **map)
 {

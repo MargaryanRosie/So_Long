@@ -23,7 +23,9 @@ SRC = src/map/map_utils.c \
 	src/map/ft_split.c \
 	src/map/clean_utils.c \
 	src/map/clean_map_string.c \
-	src/map/ft_strtrim.c 
+	src/map/ft_strtrim.c \
+	get_next_line/get_next_line.c \
+	get_next_line/get_next_line_utils.c
 
 
 OBJ = $(SRC:.c=.o)
@@ -50,12 +52,15 @@ SRC_BONUS = src_bonus/map_bonus/read_map_bonus.c \
 	src_bonus/map_bonus/clean_map_string_bonus.c \
 	src_bonus/map_bonus/clean_utils_bonus.c \
 	src_bonus/map_bonus/ft_strtrim.c \
-	src_bonus/map_bonus/ft_strjoin.c
+	src_bonus/map_bonus/ft_strjoin.c \
+	get_next_line/get_next_line.c \
+	get_next_line/get_next_line_utils.c
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 MLX = mlx/libmlx.a
-MLX_FLAGS = -Lmlx -lmlx -lX11 -lXext -lm         
+MLX_FLAGS = -Lmlx -lmlx -lX11 -lXext -lm     
+    
 all: $(NAME)
 
 $(NAME): $(OBJ) $(MLX)
@@ -69,10 +74,8 @@ bonus: $(NAME_BONUS)
 $(MLX):
 	$(MAKE) -C mlx                  
 
-%.o: %.c                //any file ending with .o
-	$(CC) $(CFLAGS) -c $< -o $@            //-c means only compile, dont link
-	                                    // $< means the first dependency of the rule
-										//-o $@  means take the output in the file ($@) which is the target(with .o extension)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)

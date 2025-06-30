@@ -1,5 +1,6 @@
 #include "../include/so_long.h"
 #include "../include/ft_split.h"
+#include "../get_next_line/get_next_line.h"
 
 int	word_count(char *str)
 {

@@ -1,27 +1,28 @@
 #include "../include/so_long.h"
+#include "../get_next_line/get_next_line.h"
 
-char	*ft_strdup(char *str)
-{
-	int	i;
-	char *copy;
+// char	*ft_strdup(char *str)
+// {
+// 	int	i;
+// 	char *copy;
 
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (str[i])
-		i++;
-	copy = (char *)malloc(sizeof(char) * (i + 1));
-	if (!copy)
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		copy[i] = str[i];
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
-}
+// 	if (!str)
+// 		return (NULL);
+// 	i = 0;
+// 	while (str[i])
+// 		i++;
+// 	copy = (char *)malloc(sizeof(char) * (i + 1));
+// 	if (!copy)
+// 		return (NULL);
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		copy[i] = str[i];
+// 		i++;
+// 	}
+// 	copy[i] = '\0';
+// 	return (copy);
+// }
 
 void	find_player(char **map, int *x, int *y)
 {
@@ -48,7 +49,7 @@ void	find_player(char **map, int *x, int *y)
 
 char	**copy_map(char **map)
 {
-	char 	**copy;
+	char	**copy;
 	int		i;
 
 	i = 0;

@@ -4,36 +4,49 @@
 
 #include "../include/so_long.h"
 
-int	count_lines(char *temp_map)
+int	count_lines(int fd, char *filename)
 {
-	int	line_count;
-	int	i;
+	char	buffer[1];
+	int		count;
+	int		bytes_read;
 
-	if (temp_map == NULL)
-		return (0);
-	line_count = 0;
-	i = 0;
-	while (temp_map[i])
+	count = 1;
+	bytes_read = read(fd, buffer, 1);
+	while (bytes_read == 1)
 	{
-		if (temp_map[i] == '\n')
-			line_count++;
-		i++;
+		if (buffer[0] == '\n')
+			count++;
+		bytes_read = read(fd, buffer, 1);
 	}
-	return (line_count + 1);     //cause in the last line there is no newline
+	if (bytes_read == -1)
+	{
+		write(2, "Error\nFailed to read the file\n", 30);
+		return (-1);
+	}
+	return (count);
 }
 
-int	line_length(char *temp_map)
+int	line_length(int fd, char *filename)
 {
-	int	line_len;
+	char	buffer[1];
+	int		line_length;
+	int		bytes_read;
 
-	if (temp_map == NULL)
-		return (0);
-	line_len = 0;
-	while (temp_map[line_len] != '\n' && temp_map[line_len])
+	line_length = 0;
+	bytes_read = read(fd, buffer, 1);
+	while (bytes_read == 1)
 	{
-		line_len++;
+		if (buffer[0] == '\n')
+			break ;
+		line_length++;
+		bytes_read = read(fd, buffer, 1);
 	}
-	return (line_len);
+	if (bytes_read == -1)
+	{
+		write(2, "Error\nFailed to read the file\n", 30);
+		return (-1);
+	}
+	return (line_length);
 }
 
 char	**allocate_map(int line_count)
@@ -72,18 +85,3 @@ void	fill_line(char *line, char *temp_map, int *index)
 	if (temp_map[*index] == '\n')
 		(*index)++;
 }
-// int main()
-// {
-// 	char str[] = "	hello  	    ";
-// 	char set[] = " 	";
-// 	char *new_str = ft_strtrim(str, set);
-
-// 	printf("%s\n", new_str);         // 'hello'
-// 	// printf("'%s'\n", ft_strtrim("   hello", ' '));      // 'hello'
-// 	// printf("'%s'\n", ft_strtrim("hello   ", ' '));      // 'hello'
-// 	// printf("'%s'\n", ft_strtrim("      ", ' '));        // ''
-// 	// printf("'%s'\n", ft_strtrim("", ' '));              // ''
-
-// 	free (new_str);
-// 	return 0;
-// }

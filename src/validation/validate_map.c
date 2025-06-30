@@ -1,5 +1,8 @@
 #include "../include/so_long.h"
+#include "../get_next_line/get_next_line.h"
 
+
+//check if rectangular
 int	is_rectangular(char **map)
 {
 	int	i;
@@ -18,6 +21,7 @@ int	is_rectangular(char **map)
 	return (1);
 }
 
+//check if the map is surrounded by walls
 int	is_surrounded_by_walls(char **map)
 {
 	int	i;
