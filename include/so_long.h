@@ -53,7 +53,7 @@ int		is_valid_path(char **map);
 int		check_if_unreachable(char **copy);
 void	flood_fill(char **map, int x, int y);
 char	**copy_map(char **map);
-void	find_player(char **map, int *x, int *y);
+int		find_player(char **map, int *x, int *y);
 char	*ft_strdup(char *str);
 int		has_valid_components(char **map);
 int		has_basic_components(char **map);

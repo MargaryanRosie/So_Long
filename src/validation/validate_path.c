@@ -11,11 +11,15 @@ int	is_valid_path(char **map)
 
 	i = 0;
 	while (map[i])
-		i++;                    //count the rows(for freeing if unreachable found)
+		i++;
 	copy = copy_map(map);
 	if (!copy)
 		return (0);
-	find_player(copy, &x, &y);
+	if (!find_player(copy, &x, &y))
+	{
+		free_map(copy, i);
+		return (0);
+	}
 	flood_fill(copy, x, y);
 	is_unreachable = check_if_unreachable(copy);
 	free_map(copy, i);

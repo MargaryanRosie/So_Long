@@ -24,12 +24,11 @@
 // 	return (copy);
 // }
 
-void	find_player(char **map, int *x, int *y)
+int	find_player(char **map, int *x, int *y)
 {
-	int	i;
+	int	i = 0;
 	int	j;
 
-	i = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -39,13 +38,15 @@ void	find_player(char **map, int *x, int *y)
 			{
 				*x = j;
 				*y = i;
-				return ;
+				return (1);
 			}
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
+
 
 char	**copy_map(char **map)
 {
