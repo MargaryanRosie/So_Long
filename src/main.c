@@ -67,7 +67,10 @@ int	main(int argc, char *argv[])
 	check_filename(argv[1]);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
+	{
+		write(2, "Error\nNo such file\n", 19);
 		return (1);
+	}
 	fill_game_map(&game, fd, argv[1]);
 	close(fd);
 	if (!game.map)

@@ -26,9 +26,10 @@
 
 int	find_player(char **map, int *x, int *y)
 {
-	int	i = 0;
+	int	i;
 	int	j;
 
+	i = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -76,7 +77,7 @@ char	**copy_map(char **map)
 
 void	flood_fill(char **map, int x, int y)     //start from (x,y) position
 {
-	if (map[y][x] == 'V' || map[y][x] == '1')
+	if (map[y][x] == 'V' || map[y][x] == '1' || map[y][x] == 'E')
 		return ;
 	map[y][x] = 'V';
 	flood_fill(map, x + 1, y);
