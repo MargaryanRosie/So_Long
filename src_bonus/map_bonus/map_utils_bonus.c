@@ -1,44 +1,67 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/so_long_bonus.h"
+#include <string.h>
 
-int	count_lines(char *temp_map)
+#include "../include/so_long.h"
+#include "../get_next_line/get_next_line.h"
+
+int	count_lines(char *filename)
 {
-	int	line_count;
-	int	i;
+	int		fd;
+	char	*cleaned;
+	int		count;
+	char	*line;
 
-	if (temp_map == NULL)
-		return (0);
-	line_count = 0;
-	i = 0;
-	while (temp_map[i])
+	count = 0;
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		if (temp_map[i] == '\n')
-			line_count++;
-		i++;
+		cleaned = ft_strtrim(line, " \t\r\v\f\n");
+		free(line);
+		if (!cleaned)
+			return (get_next_line(-42), close(fd), -1);
+		if (cleaned[0] != '\0')
+			count++;
+		line = get_next_line(fd);
+		free(cleaned);
 	}
-	return (line_count + 1);
+	get_next_line(-42);
+	if (close(fd) == -1)
+		return (-1);
+	return (count);
 }
 
-int	line_length(char *temp_map)
+int	line_length(int fd)
 {
-	int	line_len;
+	char	buffer[1];
+	int		line_length;
+	int		bytes_read;
 
-	if (temp_map == NULL)
-		return (0);
-	line_len = 0;
-	while (temp_map[line_len] != '\n' && temp_map[line_len])
+	line_length = 0;
+	bytes_read = read(fd, buffer, 1);
+	while (bytes_read == 1)
 	{
-		line_len++;
+		if (buffer[0] == '\n')
+			break ;
+		line_length++;
+		bytes_read = read(fd, buffer, 1);
 	}
-	return (line_len);
+	if (bytes_read == -1)
+	{
+		write(2, "Error\nFailed to read the file\n", 30);
+		return (-1);
+	}
+	return (line_length);
 }
 
 char	**allocate_map(int line_count)
 {
 	char	**map_2d;
 
-	map_2d = (char **) malloc((line_count + 1) * sizeof(char *));
+	map_2d = (char **)malloc((line_count + 1) * sizeof(char *));
 	if (!map_2d)
 		return (NULL);
 	map_2d[line_count] = NULL;

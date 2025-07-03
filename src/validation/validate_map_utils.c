@@ -28,8 +28,6 @@ static void	set_flags(char c, int *col, int *wall)
 		*wall = 1;
 	else if (c == 'C')
 		*col = 1;
-	// else if (c == '0')
-	// 	*space = 1;
 }
 
 //check if the map has the 3 basic components(col, wall, space)
@@ -37,13 +35,11 @@ int	has_basic_components(char **map)
 {
 	int	collectibles;
 	int	walls;
-	//int	space;
 	int	i;
 	int	j;
 
 	collectibles = 0;
 	walls = 0;
-	//space = 0;
 	i = 0;
 	while (map[i])
 	{

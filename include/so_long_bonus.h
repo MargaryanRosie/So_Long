@@ -7,6 +7,7 @@
 # include <errno.h>
 # include <stdlib.h>
 # include <../mlx/mlx.h>
+# include "../get_next_line/get_next_line.h"
 
 # define TILE_SIZE 96
 
@@ -15,8 +16,8 @@ typedef struct s_enemy
 	int	x;
 	int	y;
 	int	dx;
-	int dy;
-}t_enemy;
+	int	dy;
+}	t_enemy;
 
 typedef struct s_game
 {
@@ -30,7 +31,7 @@ typedef struct s_game
 	int		moves;
 	int		collectibles;
 
-	t_enemy	enemies[100];
+	t_enemy	*enemies;
 	int		enemy_count;
 	void	*collectible_images[3];
 	int		collectible_image;	
@@ -72,7 +73,6 @@ typedef struct s_components
 {
 	int	collectibles;
 	int	walls;
-	int	space;
 	int	enemy;
 }	t_components;
 
@@ -87,7 +87,8 @@ int		is_valid_path(char **map);
 int		check_if_unreachable(char **copy);
 void	flood_fill(char **map, int x, int y);
 char	**copy_map(char **map);
-void	find_player(char **map, int *x, int *y);
+int		find_player(char **map, int *x, int *y);
+int		validate_file_name(char *filename);
 char	*ft_strdup(char *str);
 int		has_valid_components(char **map);
 int		has_basic_components(char **map);
@@ -123,6 +124,8 @@ void	get_line_bounds(char **lines, int *start, int *end);
 char	*append_trimmed_line(char *cleaned_temp, char *line, char *set);
 char	*join_cleaned_lines(char **lines, int start, int end);
 void	free_split(char **split);
+int		count_enemies(char **map_2d);
+void	enemy_init(t_game *game);
 
 
 #endif

@@ -1,35 +1,17 @@
 #include "../include/so_long_bonus.h"
 #include <stdio.h>
 
-static char	*read_and_clean_map(char *s, char *temp_map)
-{
-	char	*cleaned;
-
-	if (read_map(s, temp_map) != 0)
-	{
-		write(2, "Error\nFailed to read map\n", 26);
-		exit (1);
-	}
-	cleaned = clean_map_string(temp_map);
-	if (!cleaned)
-		exit(2);
-	return (cleaned);
-}
-
-static void	check_map(t_game *game, char *s, char *temp_map)
+static void	fill_game_map(t_game *game, int fd, char *filename)
 {
 	int		i;
 	int		result;
-	char	*cleaned;
 
 	if (!game)
 		exit(1);
-	cleaned = read_and_clean_map(s, temp_map);
-	game->map = fill_2d_array(cleaned);
-	free(cleaned);
+	game->map = fill_2d_array(fd, filename);
 	if (!game->map)
 	{
-		write(2, "Error\nFailed to convert map\n", 29);
+		write(2, "Error\nFailed to convert map\n", 28);
 		exit(3);
 	}
 	result = validate_map(game->map);
@@ -47,7 +29,16 @@ static void	check_args(int argc)
 {
 	if (argc != 2)
 	{
-		write(2, "Error\nInvalid number of parameters\n", 36);
+		write(2, "Error\nInvalid number of parameters\n", 35);
+		exit(1);
+	}
+}
+
+static void	check_filename(char *filename)
+{
+	if (!validate_file_name(filename))
+	{
+		write(2, "Error\nInvalid file name\n", 24);
 		exit(1);
 	}
 }
@@ -61,6 +52,7 @@ static void	check_window(t_game *game)
 	}
 	if (!game->window)
 	{
+		mlx_destroy_display(game->mlx);
 		write(2, "Error\nWindow creation failed!\n", 31);
 		exit(1);
 	}
@@ -69,10 +61,18 @@ static void	check_window(t_game *game)
 int	main(int argc, char *argv[])
 {
 	t_game	game;
-	char	temp_map[1000];
+	int		fd;
 
 	check_args(argc);
-	check_map(&game, argv[1], temp_map);
+	check_filename(argv[1]);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		write(2, "Error\nNo such file\n", 19);
+		return (1);
+	}
+	fill_game_map(&game, fd, argv[1]);
+	close(fd);
 	if (!game.map)
 	{
 		write(2, "Error\nMap is NULL!\n", 20);

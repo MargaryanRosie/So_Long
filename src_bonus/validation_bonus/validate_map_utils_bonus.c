@@ -27,8 +27,6 @@ static void	set_flags(char c, t_components *components)
 		components->walls = 1;
 	else if (c == 'C')
 		components->collectibles = 1;
-	else if (c == '0')
-		components->space = 1;
 	else if (c == 'M')
 		components->enemy = 1;
 }
@@ -41,7 +39,6 @@ int	has_basic_components(char **map)
 
 	components.collectibles = 0;
 	components.walls = 0;
-	components.space = 0;
 	components.enemy = 0;
 	i = 0;
 	while (map[i])
@@ -50,7 +47,7 @@ int	has_basic_components(char **map)
 		while (map[i][j])
 		{
 			set_flags(map[i][j], &components);
-			if (components.walls && components.space
+			if (components.walls
 				&& components.collectibles && components.enemy)
 				return (1);
 			j++;

@@ -40,6 +40,7 @@ SRC_BONUS = src_bonus/map_bonus/read_map_bonus.c \
 	src_bonus/movement_bonus/player_movement_bonus.c \
 	src_bonus/draw_image_bonus.c \
 	src_bonus/main_bonus.c \
+	src_bonus/init_enemy.c \
 	src_bonus/movement_bonus/input_bonus.c \
 	src_bonus/utils_bonus.c \
 	src_bonus/load_images_bonus.c \

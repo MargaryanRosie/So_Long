@@ -1,6 +1,6 @@
 #include "../include/so_long_bonus.h"
 
-void free_map(char **map_2d, int rows_allocated)
+void	free_map(char **map_2d, int rows_allocated)
 {
 	int	i;
 
@@ -77,13 +77,15 @@ void	free_all(t_game *game)
 	destroy_images_2(game);
 	if (game->window)
 		mlx_destroy_window(game->mlx, game->window);
-	if (game->map)
-		free_map(game->map, game->height);
+	if (game->enemies)
+		free(game->enemies);
+	mlx_destroy_display(game->mlx);
+	free_map(game->map, game->height);
+	free(game->mlx);
 }
 
 int	exit_game(t_game	*game)
 {
 	free_all(game);
 	exit(0);
-	return (0);
 }

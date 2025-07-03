@@ -57,6 +57,7 @@ void	free_all(t_game *game)
 
 }
 
+
 int	exit_game(t_game *game)
 {
 	free_all(game);

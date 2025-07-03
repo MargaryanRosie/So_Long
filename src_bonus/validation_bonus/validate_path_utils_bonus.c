@@ -1,29 +1,29 @@
 #include "../include/so_long_bonus.h"
 
-char	*ft_strdup(char *str)
-{
-	int		i;
-	char	*copy;
+// char	*ft_strdup(char *str)
+// {
+// 	int		i;
+// 	char	*copy;
 
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (str[i])
-		i++;
-	copy = (char *)malloc(sizeof(char) * (i + 1));
-	if (!copy)
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		copy[i] = str[i];
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
-}
+// 	if (!str)
+// 		return (NULL);
+// 	i = 0;
+// 	while (str[i])
+// 		i++;
+// 	copy = (char *)malloc(sizeof(char) * (i + 1));
+// 	if (!copy)
+// 		return (NULL);
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		copy[i] = str[i];
+// 		i++;
+// 	}
+// 	copy[i] = '\0';
+// 	return (copy);
+// }
 
-void	find_player(char **map, int *x, int *y)
+int	find_player(char **map, int *x, int *y)
 {
 	int	i;
 	int	j;
@@ -38,12 +38,13 @@ void	find_player(char **map, int *x, int *y)
 			{
 				*x = j;
 				*y = i;
-				return ;
+				return (1);
 			}
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
 
 char	**copy_map(char **map)
@@ -74,7 +75,7 @@ char	**copy_map(char **map)
 
 void	flood_fill(char **map, int x, int y)     //start from (x,y) position
 {
-	if (map[y][x] == 'V' || map[y][x] == '1')
+	if (map[y][x] == 'V' || map[y][x] == '1' || map[y][x] == 'E')
 		return ;
 	map[y][x] = 'V';
 	flood_fill(map, x + 1, y);
@@ -94,7 +95,7 @@ int	check_if_unreachable(char **copy)
 		j = 0;
 		while (copy[i][j])
 		{
-			if (copy[i][j] == 'C' || copy[i][j] == 'E')
+			if (copy[i][j] == 'C')
 				return (0);
 			j++;
 		}
