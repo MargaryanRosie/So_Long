@@ -97,7 +97,7 @@ int	check_if_unreachable(char **copy)
 		j = 0;
 		while (copy[i][j])
 		{
-			if (copy[i][j] == 'C' || copy[i][j] == 'E')
+			if (copy[i][j] == 'C')
 				return (0);
 			j++;
 		}
