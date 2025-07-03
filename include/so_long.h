@@ -40,7 +40,7 @@ typedef struct s_game
 	void	*img_collectible;
 }	t_game;
 
-int		count_lines(int fd, char *filename);
+int		count_lines(char *filename);
 int		line_length(int fd, char *filename);
 char	**allocate_map(int line_count);
 char	*allocate_line(int line_length);

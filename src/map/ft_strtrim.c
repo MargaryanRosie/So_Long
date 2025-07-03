@@ -26,6 +26,7 @@ static int	find_len(char *s, char *set, int *start)
 	int	len;
 
 	i = 0;
+	len = 0;
 	while (s[i] && is_in_set(s[i], set))
 		i++;
 	*start = i;
@@ -48,10 +49,9 @@ char	*ft_strtrim(char *s, char *set)
 	int		len;
 	int		i;
 
-	if (!s)
+	if (!s || !set)
 		return (NULL);
 	len = find_len(s, set, &start);
-	printf("len: %d\n", len);
 	new = (char *)malloc(sizeof(char) * (len + 1));
 	if (!new)
 		return (NULL);

@@ -2,6 +2,7 @@ NAME = so_long
 NAME_BONUS = so_long_bonus
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx
+## valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose
 
 SRC = src/map/map_utils.c \
 	src/map/read_map.c \
