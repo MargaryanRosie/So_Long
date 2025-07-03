@@ -49,6 +49,23 @@ int	is_surrounded_by_walls(char **map)
 	return (1);
 }
 
+int	validate_file_name(char *filename)
+{
+	int	len;
+
+	if (!filename)
+		return (0);
+	len = ft_strlen(filename);
+	if (len < 4)
+		return (0);
+	if (filename[len - 4] != '.'
+		|| filename[len - 3] != 'b'
+		|| filename[len - 2] != 'e'
+		|| filename[len - 1] != 'r')
+		return (0);
+	return (1);
+}
+
 int	validate_structure(char **map)
 {
 	if (is_rectangular(map) == 0)

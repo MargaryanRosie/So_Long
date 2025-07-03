@@ -32,7 +32,6 @@ static void	set_flags(char c, int *col, int *wall, int *space)
 		*space = 1;
 }
 
-
 //check if the map has the 3 basic components(col, wall, space)
 int	has_basic_components(char **map)
 {

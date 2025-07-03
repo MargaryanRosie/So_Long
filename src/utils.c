@@ -46,32 +46,20 @@ char	*ft_strjoin_with_newline(char *s1, char *s2)
 	return (start);
 }
 
-// char	*ft_strjoin(char *s1, char *s2)
-// {
-// 	char	*ptr;
-// 	char	*start;
+void	free_split(char **split)
+{
+	int	i = 0;
 
-// 	if (!s1 || !s2)
-// 		return (NULL);
-// 	ptr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-// 	if (!ptr)
-// 		return (NULL);
-// 	start = ptr;
-// 	while (*s1)
-// 	{
-// 		*ptr = *s1;
-// 		ptr++;
-// 		s1++;
-// 	}
-// 	while (*s2)
-// 	{
-// 		*ptr = *s2;
-// 		ptr++;
-// 		s2++;
-// 	}
-// 	*ptr = '\0';
-// 	return (start);
-// }
+	if (!split)
+		return ;
+	while (split[i])
+	{
+		free(split[i]);
+		split[i] = NULL;
+		i++;
+	}
+	free(split);
+}
 
 int	ft_strlen(char *s)
 {

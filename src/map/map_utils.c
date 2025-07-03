@@ -34,7 +34,7 @@ int	count_lines(char *filename)
 	return (count);
 }
 
-int	line_length(int fd, char *filename)
+int	line_length(int fd)
 {
 	char	buffer[1];
 	int		line_length;

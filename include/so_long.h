@@ -41,7 +41,8 @@ typedef struct s_game
 }	t_game;
 
 int		count_lines(char *filename);
-int		line_length(int fd, char *filename);
+int		validate_file_name(char *filename);
+int		line_length(int fd);
 char	**allocate_map(int line_count);
 char	*allocate_line(int line_length);
 void	free_map(char **map_2d, int rows_allocated);
