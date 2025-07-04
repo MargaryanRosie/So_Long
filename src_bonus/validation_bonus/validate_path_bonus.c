@@ -1,4 +1,5 @@
 #include "../include/so_long_bonus.h"
+#include "../get_next_line/get_next_line.h"
 
 int	is_valid_path(char **map)
 {
@@ -10,7 +11,7 @@ int	is_valid_path(char **map)
 
 	i = 0;
 	while (map[i])
-		i++;                    //count the rows(for freeing if unreachable found)
+		i++;
 	copy = copy_map(map);
 	if (!copy)
 		return (0);

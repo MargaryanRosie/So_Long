@@ -1,9 +1,10 @@
 #include "../include/so_long_bonus.h"
+#include "../get_next_line/get_next_line.h"
 
 // char	*ft_strdup(char *str)
 // {
-// 	int		i;
-// 	char	*copy;
+// 	int	i;
+// 	char *copy;
 
 // 	if (!str)
 // 		return (NULL);
@@ -46,6 +47,7 @@ int	find_player(char **map, int *x, int *y)
 	}
 	return (0);
 }
+
 
 char	**copy_map(char **map)
 {

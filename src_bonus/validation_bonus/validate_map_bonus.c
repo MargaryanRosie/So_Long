@@ -1,5 +1,8 @@
 #include "../include/so_long_bonus.h"
+#include "../get_next_line/get_next_line.h"
 
+
+//check if rectangular
 int	is_rectangular(char **map)
 {
 	int	i;
@@ -18,6 +21,7 @@ int	is_rectangular(char **map)
 	return (1);
 }
 
+//check if the map is surrounded by walls
 int	is_surrounded_by_walls(char **map)
 {
 	int	i;
@@ -71,8 +75,8 @@ int	validate_structure(char **map)
 	}
 	if (is_surrounded_by_walls(map) == 0)
 	{
-		write(2, "Error\n", 7);
-		write(2, "Invalid Map: The map is not fully surrounded by walls\n", 55);
+		write(2, "Error\nInvalid Map: ", 20);
+		write(2, "The map is not fully surrounded by walls\n", 42);
 		return (0);
 	}
 	if (is_valid_path(map) == 0)

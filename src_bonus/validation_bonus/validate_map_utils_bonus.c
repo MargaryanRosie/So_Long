@@ -1,5 +1,6 @@
 #include "../include/so_long_bonus.h"
 
+//check if there are no other invalid components
 int	has_valid_components(char **map)
 {
 	int	i;
@@ -21,34 +22,32 @@ int	has_valid_components(char **map)
 	return (1);
 }
 
-static void	set_flags(char c, t_components *components)
+static void	set_flags(char c, int *col, int *wall)
 {
 	if (c == '1')
-		components->walls = 1;
+		*wall = 1;
 	else if (c == 'C')
-		components->collectibles = 1;
-	else if (c == 'M')
-		components->enemy = 1;
+		*col = 1;
 }
 
+//check if the map has the 3 basic components(col, wall, space)
 int	has_basic_components(char **map)
 {
-	t_components	components;
-	int				i;
-	int				j;
+	int	collectibles;
+	int	walls;
+	int	i;
+	int	j;
 
-	components.collectibles = 0;
-	components.walls = 0;
-	components.enemy = 0;
+	collectibles = 0;
+	walls = 0;
 	i = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
 		{
-			set_flags(map[i][j], &components);
-			if (components.walls
-				&& components.collectibles && components.enemy)
+			set_flags(map[i][j], &collectibles, &walls);
+			if (walls && collectibles)
 				return (1);
 			j++;
 		}
@@ -57,39 +56,38 @@ int	has_basic_components(char **map)
 	return (0);
 }
 
-static void	count_elements(char ch, t_counter *count)
+static void	count_elements(char ch, int *c, int *p, int *e)
 {
 	if (ch == 'C')
-		(count->c)++;
+		(*c)++;
 	else if (ch == 'P')
-		(count->p)++;
+		(*p)++;
 	else if (ch == 'E')
-		(count->e)++;
-	else if (ch == 'M')
-		(count->enm)++;
+		(*e)++;
 }
 
+//check if the number of components is valid
 int	has_valid_num_of_elements(char **map)
 {
-	int			i;
-	int			j;
-	t_counter	counter;
+	int	i;
+	int	j;
+	int	c;
+	int	p;
+	int	e;
 
-	counter.c = 0;
-	counter.p = 0;
-	counter.e = 0;
-	counter.enm = 0;
+	c = 0;
+	p = 0;
+	e = 0;
 	i = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
 		{
-			count_elements(map[i][j], &counter);
+			count_elements(map[i][j], &c, &p, &e);
 			j++;
 		}
 		i++;
 	}
-	return (counter.c >= 1 && counter.enm >= 1 
-		&& counter.p == 1 && counter.e == 1);
+	return (c >= 1 && p == 1 && e == 1);
 }
