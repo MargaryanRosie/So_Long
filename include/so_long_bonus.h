@@ -13,10 +13,10 @@
 
 typedef struct s_enemy
 {
-	int	x;
+	int	x;                //current x pos
 	int	y;
-	int	dx;
-	int	dy;
+	int	dx;                //direction in x axis
+	int	dy;               //direction in y axis
 }	t_enemy;
 
 typedef struct s_game
