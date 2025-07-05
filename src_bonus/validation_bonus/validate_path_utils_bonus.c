@@ -90,8 +90,10 @@ int	check_if_unreachable(char **copy)
 {
 	int	i;
 	int	j;
+	int	exit_reachable;
 
 	i = 0;
+	exit_reachable = 0;
 	while (copy[i])
 	{
 		j = 0;
@@ -99,9 +101,15 @@ int	check_if_unreachable(char **copy)
 		{
 			if (copy[i][j] == 'C')
 				return (0);
+			if (copy[i][j] == 'E')
+				if ((i > 0 && copy[i - 1][j] == 'V') ||
+					(copy[i + 1] && copy[i + 1][j] == 'V') ||
+					(j > 0 && copy[i][j - 1] == 'V') ||
+					(copy[i][j + 1] && copy[i][j + 1] == 'V'))
+					exit_reachable = 1;
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (exit_reachable);
 }
