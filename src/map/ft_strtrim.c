@@ -68,3 +68,41 @@ char	*ft_strtrim(char *s, char *set)
 	}
 	return (new);
 }
+
+static char	*return_empty_string(void)
+{
+	char	*trimmed;
+
+	trimmed = malloc(1);
+	if (!trimmed)
+		return (NULL);
+	trimmed[0] = '\0';
+	return (trimmed);
+}
+
+char	*ft_strtrim_for_end(char *s, char *set)
+{
+	int		start;
+	int		i;
+	char	*trimmed;
+
+	if (!s || !set)
+		return (NULL);
+	trimmed = NULL;
+	start = ft_strlen(s) - 1;
+	while (start >= 0 && is_in_set(s[start], set))
+		start--;
+	if (start < 0)
+		return (return_empty_string());
+	trimmed = malloc(sizeof(char) * (start + 2));
+	if (!trimmed)
+		return (NULL);
+	i = 0;
+	while (i <= start)
+	{
+		trimmed[i] = s[i];
+		i++;
+	}
+	trimmed[i] = '\0';
+	return (trimmed);
+}

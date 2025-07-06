@@ -77,13 +77,11 @@ void	move_player(t_game *game, int h, int v);
 int		exit_game(t_game *game);
 void	free_all(t_game *game);
 char	*ft_strtrim(char *s, char *set);
-char	*ft_strjoin_with_newline(char *s1, char *s2);
 char	*clean_map_string(char *temp_map);
-char	*ft_strjoin(char *s1, char *s2);
-//char	*ft_strjoin(char *s1, char *s2);
 void	get_line_bounds(char **lines, int *start, int *end);
 char	*append_trimmed_line(char *cleaned_temp, char *line, char *set);
 char	*join_cleaned_lines(char **lines, int start, int end);
 void	free_split(char **split);
+char	*ft_strtrim_for_end(char *s, char *set);
 
 #endif

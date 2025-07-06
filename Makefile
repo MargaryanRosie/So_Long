@@ -21,6 +21,7 @@ SRC = src/map/map_utils.c \
 	src/free/free.c \
 	src/map/ft_split_utils.c \
 	src/map/ft_split.c \
+	src/map/ft_strdup.c \
 	src/map/ft_strtrim.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c
@@ -49,6 +50,7 @@ SRC_BONUS = src_bonus/map_bonus/read_map_bonus.c \
 	src_bonus/map_bonus/ft_split_utils.c \
 	src_bonus/map_bonus/ft_strtrim.c \
 	src_bonus/map_bonus/ft_strjoin.c \
+	src_bonus/map_bonus/ft_strdup.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c
 

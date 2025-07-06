@@ -1,14 +1,14 @@
 #include "../include/so_long_bonus.h"
 #include <stdio.h>
 
-static void	fill_game_map(t_game *game, int fd, char *filename)
+static void	fill_game_map(t_game *game, int fd)
 {
 	int		i;
 	int		result;
 
 	if (!game)
 		exit(1);
-	game->map = fill_2d_array(fd, filename);
+	game->map = get_2d_array(fd);
 	if (!game->map)
 	{
 		write(2, "Error\nFailed to convert map\n", 28);
@@ -71,7 +71,7 @@ int	main(int argc, char *argv[])
 		write(2, "Error\nNo such file\n", 19);
 		return (1);
 	}
-	fill_game_map(&game, fd, argv[1]);
+	fill_game_map(&game, fd);
 	close(fd);
 	if (!game.map)
 	{

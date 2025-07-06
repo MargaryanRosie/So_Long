@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 static int	is_in_set(char c, char *set)
 {
@@ -30,7 +30,7 @@ static int	find_len(char *s, char *set, int *start)
 	while (s[i] && is_in_set(s[i], set))
 		i++;
 	*start = i;
-	if (s[i] == '\0')  // All characters are c
+	if (s[i] == '\0')
 		return (0);
 	end = i;
 	while (s[end])
@@ -68,3 +68,51 @@ char	*ft_strtrim(char *s, char *set)
 	}
 	return (new);
 }
+
+static char	*return_empty_string(void)
+{
+	char	*trimmed;
+
+	trimmed = malloc(1);
+	if (!trimmed)
+		return (NULL);
+	trimmed[0] = '\0';
+	return (trimmed);
+}
+
+char	*ft_strtrim_for_end(char *s, char *set)
+{
+	int		start;
+	int		i;
+	char	*trimmed;
+
+	if (!s || !set)
+		return (NULL);
+	trimmed = NULL;
+	start = ft_strlen(s) - 1;
+	while (start >= 0 && is_in_set(s[start], set))
+		start--;
+	if (start < 0)
+		return (return_empty_string());
+	trimmed = malloc(sizeof(char) * (start + 2));
+	if (!trimmed)
+		return (NULL);
+	i = 0;
+	while (i <= start)
+	{
+		trimmed[i] = s[i];
+		i++;
+	}
+	trimmed[i] = '\0';
+	return (trimmed);
+}
+
+// int main()
+// {
+// 	char *s = "/n/n/n/r/n/n/n/n/r";
+// 	char *trimmed = ft_strtrim_for_end(s, "/n/r ");
+
+// 	printf("trimmed: %s\n", trimmed);
+// 	free(trimmed);
+// 	return 0;
+// }
