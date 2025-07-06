@@ -2,7 +2,6 @@
 #include "../get_next_line/get_next_line.h"
 #include "../include/ft_split.h"
 
-
 static	int	check_map_blank_lines(char *str)
 {
 	int	i;
@@ -61,6 +60,5 @@ char	**get_2d_array(int fd)
 	check_blank_inside(map_2d);
 	free(joined);
 	get_next_line(-42);
-
 	return (map_2d);
 }

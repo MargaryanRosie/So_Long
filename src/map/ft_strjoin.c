@@ -1,4 +1,4 @@
-#include "../include/so_long_bonus.h"
+#include "../include/so_long.h"
 #include <stdio.h>
 
 char	*join_strings(char *s1, char *s2)

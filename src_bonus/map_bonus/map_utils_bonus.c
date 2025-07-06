@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 #include "../get_next_line/get_next_line.h"
 
 int	count_lines(char *filename)
@@ -55,41 +55,4 @@ int	line_length(int fd)
 		return (-1);
 	}
 	return (line_length);
-}
-
-char	**allocate_map(int line_count)
-{
-	char	**map_2d;
-
-	map_2d = (char **)malloc((line_count + 1) * sizeof(char *));
-	if (!map_2d)
-		return (NULL);
-	map_2d[line_count] = NULL;
-	return (map_2d);
-}
-
-char	*allocate_line(int line_length)
-{
-	char	*line;
-
-	line = (char *)malloc((line_length + 1) * sizeof(char));
-	if (!line)
-		return (NULL);
-	line[line_length] = '\0';
-	return (line);
-}
-
-void	fill_line(char *line, char *temp_map, int *index)
-{
-	int	i;
-
-	i = 0;
-	while (temp_map[*index] && temp_map[*index] != '\n')
-	{
-		line[i] = temp_map[*index];
-		(*index)++;
-		i++;
-	}
-	if (temp_map[*index] == '\n')
-		(*index)++;
 }

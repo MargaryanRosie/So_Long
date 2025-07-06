@@ -24,7 +24,8 @@ SRC = src/map/map_utils.c \
 	src/map/ft_strdup.c \
 	src/map/ft_strtrim.c \
 	get_next_line/get_next_line.c \
-	get_next_line/get_next_line_utils.c
+	get_next_line/get_next_line_utils.c \
+	src/map/ft_strjoin.c 
 
 
 OBJ = $(SRC:.c=.o)

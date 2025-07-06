@@ -13,10 +13,10 @@
 
 typedef struct s_enemy
 {
-	int	x;                //current x pos
+	int	x;
 	int	y;
-	int	dx;                //direction in x axis
-	int	dy;               //direction in y axis
+	int	dx;
+	int	dy;
 }	t_enemy;
 
 typedef struct s_game
@@ -103,7 +103,6 @@ void	draw_tile(t_game *game, void *img, int x, int y);
 void	draw_map(t_game *game);
 void	game_init(t_game *game, char **map);
 void	load_images(t_game *game);
-void	draw_background(t_game *game);
 void	draw_wall(t_game *game, int x, int y);
 void	ft_putchar(char c);
 void	ft_putnbr(int n);
@@ -117,18 +116,11 @@ char	*ft_itoa(int n);
 char	*ft_strjoin(char *s1, char	*s2);
 void	display_move_count(t_game *game);
 char	*ft_strtrim(char *s, char *set);
-//char	*ft_strjoin_with_newline(char *s1, char *s2);
-char	*clean_map_string(char *temp_map);
 char	*join_strings(char *s1, char *s2);
-void	get_line_bounds(char **lines, int *start, int *end);
-char	*append_trimmed_line(char *cleaned_temp, char *line, char *set);
-char	*join_cleaned_lines(char **lines, int start, int end);
 void	free_split(char **split);
 int		count_enemies(char **map_2d);
 void	enemy_init(t_game *game);
 char	*ft_strtrim_for_end(char *s, char *set);
 char	**get_2d_array(int fd);
-
-
 
 #endif
