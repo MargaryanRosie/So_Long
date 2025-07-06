@@ -30,7 +30,7 @@ static int	find_len(char *s, char *set, int *start)
 	while (s[i] && is_in_set(s[i], set))
 		i++;
 	*start = i;
-	if (s[i] == '\0')  // All characters are c
+	if (s[i] == '\0')
 		return (0);
 	end = i;
 	while (s[end])

@@ -106,13 +106,3 @@ char	*ft_strtrim_for_end(char *s, char *set)
 	trimmed[i] = '\0';
 	return (trimmed);
 }
-
-// int main()
-// {
-// 	char *s = "/n/n/n/r/n/n/n/n/r";
-// 	char *trimmed = ft_strtrim_for_end(s, "/n/r ");
-
-// 	printf("trimmed: %s\n", trimmed);
-// 	free(trimmed);
-// 	return 0;
-// }

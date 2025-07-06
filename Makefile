@@ -4,8 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx
 ## valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose
 
-SRC = src/map/map_utils.c \
-	src/map/read_map.c \
+SRC = src/map/read_map.c \
 	src/validation/validate_map.c \
 	src/validation/validate_map_utils.c \
 	src/validation/validate_path_utils.c \
@@ -21,7 +20,6 @@ SRC = src/map/map_utils.c \
 	src/free/free.c \
 	src/map/ft_split_utils.c \
 	src/map/ft_split.c \
-	src/map/ft_strdup.c \
 	src/map/ft_strtrim.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c \
@@ -31,7 +29,6 @@ SRC = src/map/map_utils.c \
 OBJ = $(SRC:.c=.o)
 
 SRC_BONUS = src_bonus/map_bonus/read_map_bonus.c \
-	src_bonus/map_bonus/map_utils_bonus.c \
 	src_bonus/validation_bonus/validate_map_bonus.c \
 	src_bonus/validation_bonus/validate_path_bonus.c \
 	src_bonus/validation_bonus/validate_path_utils_bonus.c \
@@ -51,7 +48,6 @@ SRC_BONUS = src_bonus/map_bonus/read_map_bonus.c \
 	src_bonus/map_bonus/ft_split_utils.c \
 	src_bonus/map_bonus/ft_strtrim.c \
 	src_bonus/map_bonus/ft_strjoin.c \
-	src_bonus/map_bonus/ft_strdup.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c
 

@@ -41,28 +41,3 @@ void	game_init(t_game *game, char **map)
 	game->collectibles = 0;
 	set_game_state(game);
 }
-
-// int main()
-// {
-// 	t_game	game;
-// 	char	temp_map[1000];
-
-// 	read_map("../maps/level1.ber", temp_map);
-// 	game.map = fill_2d_array(temp_map);
-
-// 	// int i = 0;
-// 	// int j;
-// 	// while (i < 6)
-// 	// {
-// 	// 	j = 0;
-// 	// 	while (j < 6)
-// 	// 	{
-// 	// 		printf("%c", game.map[i][j]);
-// 	// 		j++;
-// 	// 	}
-// 	// 	printf("\n");
-// 	// 	i++;
-// 	// }
-
-// }
-

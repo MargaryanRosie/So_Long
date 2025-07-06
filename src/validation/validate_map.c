@@ -1,27 +1,6 @@
 #include "../include/so_long.h"
 #include "../get_next_line/get_next_line.h"
 
-
-//check if rectangular
-int	is_rectangular(char **map)
-{
-	int	i;
-	int	first_len;
-
-	if (!map || !map[0])
-		return (0);
-	first_len = ft_strlen(map[0]);
-	i = 1;
-	while (map[i])
-	{
-		if (first_len != ft_strlen(map[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-//check if the map is surrounded by walls
 int	is_surrounded_by_walls(char **map)
 {
 	int	i;

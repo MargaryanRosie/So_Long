@@ -1,6 +1,23 @@
 #include "../include/so_long.h"
 
-//check if there are no other invalid components
+int	is_rectangular(char **map)
+{
+	int	i;
+	int	first_len;
+
+	if (!map || !map[0])
+		return (0);
+	first_len = ft_strlen(map[0]);
+	i = 1;
+	while (map[i])
+	{
+		if (first_len != ft_strlen(map[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	has_valid_components(char **map)
 {
 	int	i;
@@ -22,15 +39,6 @@ int	has_valid_components(char **map)
 	return (1);
 }
 
-static void	set_flags(char c, int *col, int *wall)
-{
-	if (c == '1')
-		*wall = 1;
-	else if (c == 'C')
-		*col = 1;
-}
-
-//check if the map has the 3 basic components(col, wall, space)
 int	has_basic_components(char **map)
 {
 	int	collectibles;
@@ -46,7 +54,10 @@ int	has_basic_components(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			set_flags(map[i][j], &collectibles, &walls);
+			if (map[i][j] == '1')
+				walls = 1;
+			else if (map[i][j] == 'C')
+				collectibles = 1;
 			if (walls && collectibles)
 				return (1);
 			j++;
@@ -66,7 +77,6 @@ static void	count_elements(char ch, int *c, int *p, int *e)
 		(*e)++;
 }
 
-//check if the number of components is valid
 int	has_valid_num_of_elements(char **map)
 {
 	int	i;

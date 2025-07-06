@@ -58,7 +58,7 @@ void	load_images_2(t_game *game)
 			"textures/exit.xpm", &w, &h);
 	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
 			"textures/collectible.xpm", &w, &h);
-	game->img_player = game->img_player_f;     //by default
+	game->img_player = game->img_player_f;
 }
 
 void	load_images(t_game *game)

@@ -58,17 +58,3 @@ char	**ft_split(char *str)
 	output[wc] = NULL;
 	return (output);
 }
-// int main()
-// {
-// 	char str[] = "hello\nworld\nhh\naaa\nyes\n";
-// 	char **str2 = ft_split(str);
-
-// 	int i = 0;
-// 	while(str2[i])
-// 	{
-// 		printf("%s\n", str2[i]);
-// 		i++;
-// 	}
-// 	free(str2);
-// 	return 0;
-// }

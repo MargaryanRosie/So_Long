@@ -46,7 +46,7 @@ int	allocate_word(char **output, char *str, int start, int i, int j)
 
 int	process_word(char **output, char *str, int *i, int *j)
 {
-	int start;
+	int	start;
 
 	start = *i;
 	loop_the_word(str, i);
