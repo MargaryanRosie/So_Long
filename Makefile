@@ -77,7 +77,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME) $(NAME_BONUS)
-
+	make -C mlx clean
 
 re: fclean all
 

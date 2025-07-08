@@ -62,7 +62,7 @@ void	load_images(t_game *game)
 {
 	load_images_1(game);
 	load_images_2(game);
-	game->img_player = game->img_player_f;     //by default
+	game->img_player = game->img_player_f;
 	game->img_enemy = game->img_enemy_f;
 	game->collectible_images[0] = game->img_collectible;
 	game->collectible_images[1] = game->img_collectible_2;

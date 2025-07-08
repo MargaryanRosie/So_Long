@@ -17,7 +17,7 @@ void	ft_putnbr(int n)
 	ft_putchar((n % 10) + '0');
 }
 
-static int num_len(int n)
+static int	num_len(int n)
 {
 	int	len;
 

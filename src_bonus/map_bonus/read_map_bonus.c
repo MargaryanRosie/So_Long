@@ -57,8 +57,8 @@ char	**get_2d_array(int fd)
 	free(tmp);
 	check_map_blank_lines(joined);
 	map_2d = ft_split(joined);
+	if (map_2d == NULL)
+		return (free(joined), NULL);
 	check_blank_inside(map_2d);
-	free(joined);
-	get_next_line(-42);
-	return (map_2d);
+	return (free(joined), get_next_line(-42), map_2d);
 }

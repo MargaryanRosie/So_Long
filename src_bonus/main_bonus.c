@@ -74,10 +74,7 @@ int	main(int argc, char *argv[])
 	fill_game_map(&game, fd);
 	close(fd);
 	if (!game.map)
-	{
-		write(2, "Error\nMap is NULL!\n", 20);
 		exit(1);
-	}
 	game_init(&game, game.map);
 	load_images(&game);
 	draw_map(&game);
