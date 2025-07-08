@@ -80,15 +80,15 @@ char	**get_2d_array(int fd)
 	joined = read_and_join_lines(fd);
 	if (is_only_whitespace(joined))
 	{
-		write(2, "Error\nMap only contains spaces or whitespace\n", 45);
+		write(2, "Error\nMap is empty or contains only whitespaces\n", 48);
 		free(joined);
 		close(fd);
 		exit(1);
 	}
-	check_map_blank_lines(joined, fd);
 	tmp = joined;
-	joined = ft_strtrim(joined, "\t\n\v\f\r");
+	joined = ft_strtrim(joined, " \t\n\v\f\r");
 	free(tmp);
+	check_map_blank_lines(joined, fd);
 	map_2d = ft_split(joined);
 	if (!map_2d)
 		return (free(joined), NULL);

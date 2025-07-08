@@ -29,6 +29,8 @@ static int	find_len(char *s, char *set, int *start)
 	len = 0;
 	while (s[i] && is_in_set(s[i], set))
 		i++;
+	while (s[i] != '\n' && i != 0)
+		i--;
 	*start = i;
 	if (s[i] == '\0')
 		return (0);
