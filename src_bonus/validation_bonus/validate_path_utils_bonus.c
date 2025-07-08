@@ -77,7 +77,7 @@ char	**copy_map(char **map)
 
 void	flood_fill(char **map, int x, int y)     //start from (x,y) position
 {
-	if (map[y][x] == 'V' || map[y][x] == '1' || map[y][x] == 'E')
+	if (map[y][x] == 'V' || map[y][x] == '1' || map[y][x] == 'E' || map[y][x] == 'M')
 		return ;
 	map[y][x] = 'V';
 	flood_fill(map, x + 1, y);
