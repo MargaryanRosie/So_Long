@@ -7,12 +7,12 @@ static void	fill_game_map(t_game *game, int fd)
 	int		result;
 
 	if (!game)
-		exit(1);
+		exit((close(fd), 1));
 	game->map = get_2d_array(fd);
 	if (!game->map)
 	{
 		write(2, "Error\nFailed to convert map\n", 28);
-		exit(3);
+		exit((close(fd), 3));
 	}
 	result = validate_map(game->map);
 	i = 0;
@@ -21,7 +21,7 @@ static void	fill_game_map(t_game *game, int fd)
 	if (!result)
 	{
 		free_map(game->map, i);
-		exit(4);
+		exit((close(fd), 4));
 	}
 }
 
