@@ -2,17 +2,34 @@
 #include "../get_next_line/get_next_line.h"
 #include "../include/ft_split.h"
 
-static	int	check_map_blank_lines(char *str)
+static int	is_only_whitespace(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '\n' && str[i + 1] == '\n')
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'
+			&& str[i] != '\v' && str[i] != '\f' && str[i] != '\r')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static	int	check_map_blank_lines(char *str, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i] == '\n' && str[i + 1] == '\n')
+			|| (str[i] == '\r' && str[i + 1] == '\r'))
 		{
 			write(2, "Error\nMap contains blank lines\n", 31);
 			free(str);
+			close(fd);
 			exit(1);
 		}
 		i++;
@@ -35,30 +52,48 @@ static void	check_blank_inside(char **str)
 	}
 }
 
+static char	*read_and_join_lines(int fd)
+{
+	char	*line;
+	char	*joined;
+	char	*tmp;
+
+	joined = ft_strdup("");
+	line = get_next_line(fd);
+	while (line)
+	{
+		tmp = joined;
+		joined = join_strings(joined, line);
+		free(tmp);
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (joined);
+}
+
 char	**get_2d_array(int fd)
 {
-	char	*current_line;
 	char	*joined;
 	char	*tmp;
 	char	**map_2d;
 
-	joined = ft_strdup("");
-	current_line = get_next_line(fd);
-	while (current_line)
+	joined = read_and_join_lines(fd);
+	if (is_only_whitespace(joined))
 	{
-		tmp = joined;
-		joined = join_strings(joined, current_line);
-		free(tmp);
-		free(current_line);
-		current_line = get_next_line(fd);
+		write(2, "Error\nMap only contains spaces or whitespace\n", 45);
+		free(joined);
+		close(fd);
+		exit(1);
 	}
+	check_map_blank_lines(joined, fd);
 	tmp = joined;
-	joined = ft_strtrim(joined, " \t\n\v\f\r");
+	joined = ft_strtrim(joined, "\t\n\v\f\r");
 	free(tmp);
-	check_map_blank_lines(joined);
 	map_2d = ft_split(joined);
-	if (map_2d == NULL)
+	if (!map_2d)
 		return (free(joined), NULL);
 	check_blank_inside(map_2d);
-	return (free(joined), get_next_line(-42), map_2d);
+	free(joined);
+	get_next_line(-42);
+	return (map_2d);
 }

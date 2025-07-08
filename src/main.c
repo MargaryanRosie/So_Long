@@ -38,7 +38,7 @@ static void	check_filename(char *filename)
 {
 	if (!validate_file_name(filename))
 	{
-		write(2, "Error\nInvalid file name\n", 24);
+		write(2, "Error\nInvalid file extension\n", 29);
 		exit(1);
 	}
 }
