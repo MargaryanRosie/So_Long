@@ -59,6 +59,8 @@ void	free_all(t_game *game)
 {
 	free_images(game);
 	free_wall_images(game);
+	if (game->window)
+		mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free_map(game->map, game->height);
 	free(game->mlx);
