@@ -1,29 +1,6 @@
 #include "../include/so_long_bonus.h"
 #include "../get_next_line/get_next_line.h"
 
-// char	*ft_strdup(char *str)
-// {
-// 	int	i;
-// 	char *copy;
-
-// 	if (!str)
-// 		return (NULL);
-// 	i = 0;
-// 	while (str[i])
-// 		i++;
-// 	copy = (char *)malloc(sizeof(char) * (i + 1));
-// 	if (!copy)
-// 		return (NULL);
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		copy[i] = str[i];
-// 		i++;
-// 	}
-// 	copy[i] = '\0';
-// 	return (copy);
-// }
-
 int	find_player(char **map, int *x, int *y)
 {
 	int	i;
@@ -47,7 +24,6 @@ int	find_player(char **map, int *x, int *y)
 	}
 	return (0);
 }
-
 
 char	**copy_map(char **map)
 {
@@ -75,9 +51,10 @@ char	**copy_map(char **map)
 	return (copy);
 }
 
-void	flood_fill(char **map, int x, int y)     //start from (x,y) position
+void	flood_fill(char **map, int x, int y)
 {
-	if (map[y][x] == 'V' || map[y][x] == '1' || map[y][x] == 'E' || map[y][x] == 'M')
+	if (map[y][x] == 'V' || map[y][x] == '1'
+		|| map[y][x] == 'E' || map[y][x] == 'M')
 		return ;
 	map[y][x] = 'V';
 	flood_fill(map, x + 1, y);

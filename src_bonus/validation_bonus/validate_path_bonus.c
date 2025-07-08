@@ -23,7 +23,7 @@ int	is_valid_path(char **map)
 	flood_fill(copy, x, y);
 	is_unreachable = check_if_unreachable(copy);
 	free_map(copy, i);
-	if (is_unreachable == 0)     //unreachable found
+	if (is_unreachable == 0)
 		return (0);
 	else
 		return (1);

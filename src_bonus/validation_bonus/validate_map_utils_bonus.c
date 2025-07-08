@@ -1,5 +1,23 @@
 #include "../include/so_long_bonus.h"
 
+int	is_rectangular(char **map)
+{
+	int	i;
+	int	first_len;
+
+	if (!map || !map[0])
+		return (0);
+	first_len = ft_strlen(map[0]);
+	i = 1;
+	while (map[i])
+	{
+		if (first_len != ft_strlen(map[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	has_valid_components(char **map)
 {
 	int	i;
