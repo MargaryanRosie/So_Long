@@ -20,38 +20,6 @@ int	find_newline(char *str)
 	return (-1);
 }
 
-// int	ft_strlen(char *str)
-// {
-// 	int	i;
-
-// 	if (!str)
-// 		return (0);
-// 	i = 0;
-// 	while (str[i])
-// 		i++;
-// 	return (i);
-// }
-
-// char	*ft_strncpy(char *dest, char *src, int n)
-// {
-// 	int	i;
-
-// 	if (!dest || !src)
-// 		return (NULL);
-// 	i = 0;
-// 	while (src[i] && i < n)
-// 	{
-// 		dest[i] = src[i];
-// 		i++;
-// 	}
-// 	while (i < n)
-// 	{
-// 		dest[i] = '\0';
-// 		i++;
-// 	}
-// 	return (dest);
-// }
-
 char	*ft_strjoin(char *str1, char *str2)
 {
 	char	*new_string;
