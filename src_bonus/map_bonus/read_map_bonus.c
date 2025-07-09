@@ -1,4 +1,4 @@
-#include "../include/so_long_bonus.h"
+#include "../include/so_long.h"
 #include "../get_next_line/get_next_line.h"
 #include "../include/ft_split.h"
 
@@ -41,13 +41,22 @@ static void	check_blank_inside(char **str)
 {
 	int		i;
 	char	*tmp;
+	int		min_spaces;
 
 	i = 0;
+	min_spaces = get_min_whitespaces(str);
 	while (str[i])
 	{
 		tmp = str[i];
 		str[i] = ft_strtrim_for_end(str[i], " \t\v\f\r");
 		free(tmp);
+
+		if (min_spaces > 0 && ft_strlen(str[i]) >= min_spaces)
+		{
+			tmp = str[i];
+			str[i] = ft_strdup(str[i] + min_spaces);
+			free(tmp);
+		}
 		i++;
 	}
 }

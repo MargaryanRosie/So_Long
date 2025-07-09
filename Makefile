@@ -5,6 +5,7 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx
 ## valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose
 
 SRC = src/map/read_map.c \
+	src/map/checking_utils.c \
 	src/validation/validate_map.c \
 	src/validation/validate_map_utils.c \
 	src/validation/validate_path_utils.c \
@@ -29,6 +30,7 @@ SRC = src/map/read_map.c \
 OBJ = $(SRC:.c=.o)
 
 SRC_BONUS = src_bonus/map_bonus/read_map_bonus.c \
+ 	src_bonus/map_bonus/checking_utils_bonus.c \
 	src_bonus/validation_bonus/validate_map_bonus.c \
 	src_bonus/validation_bonus/validate_path_bonus.c \
 	src_bonus/validation_bonus/validate_path_utils_bonus.c \
