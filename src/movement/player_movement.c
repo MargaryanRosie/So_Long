@@ -1,12 +1,5 @@
 #include "../include/so_long.h"
 
-static void	print_moves(int moves)
-{
-	write(1, "Moves: ", 7);
-	ft_putnbr(moves);
-	write(1, "\n", 1);
-}
-
 static void	check_exit(t_game *game)
 {
 	if (game->collectibles == 0)

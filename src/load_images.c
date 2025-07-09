@@ -9,7 +9,7 @@ static void	check(t_game *game)
 		|| !game->img_player_f || !game->img_player_b || !game->img_player_r
 		|| !game->img_player_l || !game->img_exit || !game->img_collectible)
 	{
-		write(2, "Error: Failed to load one or more textures\n", 44);
+		write(2, "Error\nFailed to load one or more textures\n", 42);
 		exit(1);
 	}
 }

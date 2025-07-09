@@ -44,7 +44,7 @@ void	game_init(t_game *game, char **map)
 	game->enemies = malloc(sizeof(t_enemy) * game->enemy_count);
 	if (!game->enemies)
 	{
-		write(2, "Malloc failed for enemies\n", 26);
+		write(2, "Error\nMalloc failed for enemies\n", 32);
 		return ;
 	}
 	set_game_state(game);

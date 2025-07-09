@@ -17,3 +17,10 @@ int	handle_keypress(int keycode, t_game *game)
 		move_player(game, 1, 0);
 	return (0);
 }
+
+void	print_moves(int moves)
+{
+	write(1, "Moves: ", 7);
+	ft_putnbr(moves);
+	write(1, "\n", 1);
+}

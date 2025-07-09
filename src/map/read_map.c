@@ -50,7 +50,6 @@ static void	check_blank_inside(char **str)
 		tmp = str[i];
 		str[i] = ft_strtrim_for_end(str[i], " \t\v\f\r");
 		free(tmp);
-
 		if (min_spaces > 0 && ft_strlen(str[i]) >= min_spaces)
 		{
 			tmp = str[i];

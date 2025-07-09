@@ -87,5 +87,6 @@ void	enemy_init(t_game *game);
 char	*ft_strtrim_for_end(char *s, char *set);
 char	**get_2d_array(int fd);
 int		get_min_whitespaces(char **map);
+void	print_moves(int moves);
 
 #endif

@@ -77,7 +77,7 @@ void	load_images(t_game *game)
 		|| !game->img_enemy_b || !game->img_enemy_f || !game->img_enemy_l
 		|| !game->img_enemy_r)
 	{
-		write(2, "Error: Failed to load one or more textures\n", 43);
+		write(2, "Error\nFailed to load one or more textures\n", 42);
 		exit(1);
 	}
 }
