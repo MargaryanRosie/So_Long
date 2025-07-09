@@ -1,10 +1,18 @@
 #include "../include/so_long.h"
 
+static void	print_moves(int moves)
+{
+	write(1, "Moves: ", 7);
+	ft_putnbr(moves);
+	write(1, "\n", 1);
+}
+
 static void	check_exit(t_game *game)
 {
 	if (game->collectibles == 0)
 	{
 		(game->moves)++;
+		print_moves(game->moves);
 		write(1, "You Won !\n", 11);
 		exit_game(game);
 	}
@@ -68,5 +76,6 @@ void	move_player(t_game *game, int h, int v)
 	game->player_x = new_x;
 	game->player_y = new_y;
 	(game->moves)++;
+	print_moves(game->moves);
 	draw_map(game);
 }
