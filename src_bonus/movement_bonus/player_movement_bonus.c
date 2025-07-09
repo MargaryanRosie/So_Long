@@ -68,6 +68,6 @@ void	move_player(t_game *game, int h, int v)
 	game->player_x = new_x;
 	game->player_y = new_y;
 	(game->moves)++;
-	update_enemy_position(game);
+	//update_enemy_position(game);
 	draw_map(game);
 }

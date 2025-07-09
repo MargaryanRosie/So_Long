@@ -80,7 +80,7 @@ int	main(int argc, char *argv[])
 	draw_map(&game);
 	check_window(&game);
 	mlx_key_hook(game.window, handle_keypress, &game);
-	mlx_loop_hook(game.mlx, update_enemy_position_loop, &game);
+	mlx_loop_hook(game.mlx, update_loop, &game);
 	mlx_hook(game.window, 17, 0, exit_game, &game);
 	mlx_loop(game.mlx);
 	return (0);

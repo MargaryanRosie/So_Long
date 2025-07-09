@@ -111,7 +111,7 @@ void	move_player(t_game *game, int h, int v);
 int		exit_game(t_game *game);
 void	free_all(t_game *game);
 void	update_enemy_position(t_game *game);
-int		update_enemy_position_loop(void *parameter);
+int		update_loop(void *parameter);
 char	*ft_itoa(int n);
 char	*ft_strjoin(char *s1, char	*s2);
 void	display_move_count(t_game *game);
@@ -123,5 +123,6 @@ void	enemy_init(t_game *game);
 char	*ft_strtrim_for_end(char *s, char *set);
 char	**get_2d_array(int fd);
 int		get_min_whitespaces(char **map);
+void	*get_collectible_animation(t_game *game);
 
 #endif
